@@ -1,4 +1,5 @@
 <?php
+if(isset($_SESSION['language'])){
 switch ($_SESSION['language']) {
 case 'English':
 	include "english.php";
@@ -14,4 +15,8 @@ default:
 	include "english.php";
 	break;
 }
+}else{
+	$_SESSION['language'] = "English";
+	include "english.php";
+  }
 ?>
