@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 14, 2020 at 08:54 AM
--- Server version: 5.6.49-cll-lve
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1
+-- Generation Time: Aug 18, 2021 at 04:18 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mini_farmfresh`
+-- Database: `farmfresh`
 --
 
 -- --------------------------------------------------------
@@ -74,7 +73,9 @@ INSERT INTO `cart` (`cart_id`, `c_id`, `item_id`, `weight`, `price`, `o_id`) VAL
 (41, 2, 6, 3000, 144, 19),
 (42, 2, 1, 5, 75, 20),
 (43, 2, 9, 1000, 80, 21),
-(44, 2, 4, 250, 20, 21);
+(44, 2, 4, 250, 20, 21),
+(45, 2, 1, 1, 15, 22),
+(46, 2, 2, 500, 20, 22);
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,8 @@ INSERT INTO `finalorder` (`o_id`, `c_id`, `deliveryboy`, `delivery`, `timeorder`
 (18, 2, 0, 0, 1607492832, 0, 0),
 (19, 2, 0, 0, 1607514699, 0, 0),
 (20, 2, 4, 1, 1607931861, 1607939303, 1607948198),
-(21, 2, 4, 1, 1607948849, 1607948914, 1607949057);
+(21, 2, 4, 1, 1607948849, 1607948914, 1607949057),
+(22, 2, 4, 1, 1629293975, 1629294053, 1629294244);
 
 -- --------------------------------------------------------
 
@@ -181,6 +183,7 @@ CREATE TABLE `items` (
   `i_mar` varchar(100) NOT NULL,
   `i_hin` varchar(100) NOT NULL,
   `type` int(11) NOT NULL COMMENT '1-grams,2-gadi',
+  `item_category` int(2) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `img` text NOT NULL
@@ -190,54 +193,73 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `type`, `quantity`, `price`, `img`) VALUES
-(1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 2, 26, 15, 'AmarnathLeaves.jpg'),
-(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 1, 5000, 10, 'BabyCorn.png'),
-(3, 'Beetroot', 'चुकंदर', 'चुकंदर', 1, 0, 10, 'Beetroot.jpg'),
-(4, 'Bitter Gourd', 'कार्ल', 'करेला', 1, 1000, 10, 'BitterGourd.jpeg'),
-(5, 'Bottle Gourd', 'दुधी भोपळा', 'लौकी', 1, 0, 0, 'BottleGourd.jpg'),
-(6, 'Cabbage', 'कोबी', 'पत्ता गोभी', 1, 15500, 12, 'Cabbage.jpg'),
-(7, 'Capsicum', 'शिमला मिर्ची', 'शिमला मिर्च', 1, 0, 0, 'Capsicum.jpg'),
-(8, 'Carrot', 'गाजर', 'गाजर', 1, 0, 0, 'Carrot.jpg'),
-(9, 'Cauliflower', 'फुल कोबी', 'गोभी', 1, 0, 20, 'Cauliflower.jpg'),
-(10, 'Chilli', 'मिरची', 'मिर्च', 1, 0, 0, 'Chilli.jpeg'),
-(11, 'Cluster Beans', 'गवार', 'गवार', 1, 0, 0, 'ClusterBeans.png'),
-(12, 'Coconut', 'नारळ', 'नारियल', 2, 2, 20, 'Coconut.jpg'),
-(13, 'Coriander', 'कोथिंबीर', 'धनिया', 2, 0, 0, 'CorianderLeaves.jpeg'),
-(14, 'Corn', 'मका', 'मक्का', 1, 0, 0, 'Corn.jpg'),
-(15, 'Curry Leaves', 'कडीपत्ता', 'करी पत्ते', 1, 0, 0, 'CurryLeaves.jpg'),
-(16, 'Dill Leaves', 'बडीशेप पाने', 'डिल पत्तियां', 1, 0, 0, 'DillLeaves.jpg'),
-(17, 'Drumsticks', 'शेवग्यच्य शेंगा', 'सहजन की फल्ली', 1, 0, 0, 'Drumsticks.jpg'),
-(18, 'Eggplant', 'वांगं', 'बैंगन', 1, 0, 0, 'Eggplant.jpg'),
-(19, 'Flat Green Beans', 'हिरव्या शेंगा', 'हरी सेम', 1, 0, 0, 'FlatGreenBeans.jpg'),
-(20, 'French Beans', 'फरसबी', 'फरास बीन', 1, 0, 0, 'FrenchBeans.jpg'),
-(21, 'Garlic', 'लसूण', 'लहसुन', 1, 0, 0, 'Garlic.png'),
-(22, 'Ginger', 'आले', 'अदरक', 2, 0, 0, 'Ginger.jpg'),
-(23, 'Ivy Gourd', 'आयव्ही लौकी', 'आयवहि लौकी', 1, 0, 0, 'IvyGourd.jpeg'),
-(24, 'Jackfruit', 'फणस', 'कटहल', 1, 0, 0, 'Jackfruit.jpg'),
-(25, 'Lady Finger', 'भेंडी', 'भिन्डी', 1, 0, 0, 'LadyFinger.jpeg'),
-(26, 'Lemon', 'लिंबू', 'नींबू', 1, 0, 0, 'Lemon.jpeg'),
-(27, 'Malabar Spinach', 'मलबार पालक', 'मलबार पालक', 2, 40, 10, 'MalabarSpinach.jpg'),
-(28, 'Fenugreek', 'मेथी', 'मेंथी', 2, 0, 0, 'Methi.jpg'),
-(29, 'Mint Leaves', 'पुदीना पाने', 'पुदीने की पत्तियां', 2, 0, 0, 'MintLeaves.jpg'),
-(30, 'Mushroom', 'मशरूम', 'मशरूम', 1, 0, 0, 'Mushroom.jpg'),
-(31, 'Mustard Leaves', 'मोहरीची पाने', 'सरसों की पत्तियां', 1, 0, 0, 'MustardLeaves.jpg'),
-(32, 'Onion', 'कांदा ', 'प्याज', 1, 0, 0, 'Onion.jpg'),
-(33, 'Peas', 'वाटाणे', 'मटर', 1, 0, 0, 'Peas.jpg'),
-(34, 'Potato', 'बटाटा', 'आलू', 1, 0, 0, 'Potato.jpg'),
-(35, 'Pumpkin', 'भोपळा', 'कद्दू', 1, 0, 0, 'Pumpkin.jpg'),
-(36, 'Radish Pods', 'मुळा पोड्स', 'मूली की फली', 1, 0, 0, 'RadishPods.jpg'),
-(37, 'Radish', 'मुळा', 'मूली', 1, 0, 0, 'Radish.jpg'),
-(38, 'Raw Banana', 'कच्चा केळी', 'कच्चा केला', 1, 0, 0, 'RawBanana.jpg'),
-(39, 'Red Chilli', 'लाल मिरची', 'लाल मिर्च', 1, 0, 0, 'RedChiili.jpeg'),
-(40, 'Snake Gourd', 'साप लौकी', 'साप लौकी', 1, 0, 0, 'SnakeGourd.jpg'),
-(41, 'Spinach', 'पालक', 'पालक', 2, 0, 0, 'Spinach.jpg'),
-(42, 'Spine Gourd', 'स्पाइन लौकी', 'लौकी', 1, 0, 0, 'SpineGourd.jpeg'),
-(43, 'Sweet Potato', 'रताळे', 'शकरकंद', 1, 0, 0, 'SweetPotato.gif'),
-(44, 'Taro Root', 'तारो जड़', 'तारो जड़', 1, 0, 0, 'TaroRoot.jpg'),
-(45, 'Tomato', 'टोमॅटो', 'टमाटर', 1, 0, 0, 'Tomato.jpg'),
-(46, 'Turnip', 'सलगम', 'शलजम', 1, 0, 0, 'Turnip.png'),
-(47, 'White Pumpkin', 'पांढरा भोपळा', 'सफेद कद्दू', 1, 0, 0, 'WhitePumpin.jpg');
+INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `type`, `item_category`, `quantity`, `price`, `img`) VALUES
+(1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 2, 0, 25, 15, 'AmarnathLeaves.jpg'),
+(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 1, 0, 2000, 20, 'BabyCorn.png'),
+(3, 'Beetroot', 'चुकंदर', 'चुकंदर', 1, 0, 0, 10, 'Beetroot.jpg'),
+(4, 'Bitter Gourd', 'कार्ल', 'करेला', 1, 0, 1000, 10, 'BitterGourd.jpeg'),
+(5, 'Bottle Gourd', 'दुधी भोपळा', 'लौकी', 1, 0, 0, 0, 'BottleGourd.jpg'),
+(6, 'Cabbage', 'कोबी', 'पत्ता गोभी', 1, 0, 15500, 12, 'Cabbage.jpg'),
+(7, 'Capsicum', 'शिमला मिर्ची', 'शिमला मिर्च', 1, 0, 0, 0, 'Capsicum.jpg'),
+(8, 'Carrot', 'गाजर', 'गाजर', 1, 0, 0, 0, 'Carrot.jpg'),
+(9, 'Cauliflower', 'फुल कोबी', 'गोभी', 1, 0, 0, 20, 'Cauliflower.jpg'),
+(10, 'Chilli', 'मिरची', 'मिर्च', 1, 0, 0, 0, 'Chilli.jpeg'),
+(11, 'Cluster Beans', 'गवार', 'गवार', 1, 0, 0, 0, 'ClusterBeans.png'),
+(12, 'Coconut', 'नारळ', 'नारियल', 2, 0, 2, 20, 'Coconut.jpg'),
+(13, 'Coriander', 'कोथिंबीर', 'धनिया', 2, 0, 0, 0, 'CorianderLeaves.jpeg'),
+(14, 'Corn', 'मका', 'मक्का', 1, 0, 0, 0, 'Corn.jpg'),
+(15, 'Curry Leaves', 'कडीपत्ता', 'करी पत्ते', 1, 0, 0, 0, 'CurryLeaves.jpg'),
+(16, 'Dill Leaves', 'बडीशेप पाने', 'डिल पत्तियां', 1, 0, 0, 0, 'DillLeaves.jpg'),
+(17, 'Drumsticks', 'शेवग्यच्य शेंगा', 'सहजन की फल्ली', 1, 0, 0, 0, 'Drumsticks.jpg'),
+(18, 'Eggplant', 'वांगं', 'बैंगन', 1, 0, 0, 0, 'Eggplant.jpg'),
+(19, 'Flat Green Beans', 'हिरव्या शेंगा', 'हरी सेम', 1, 0, 0, 0, 'FlatGreenBeans.jpg'),
+(20, 'French Beans', 'फरसबी', 'फरास बीन', 1, 0, 0, 0, 'FrenchBeans.jpg'),
+(21, 'Garlic', 'लसूण', 'लहसुन', 1, 0, 0, 0, 'Garlic.png'),
+(22, 'Ginger', 'आले', 'अदरक', 2, 0, 0, 0, 'Ginger.jpg'),
+(23, 'Ivy Gourd', 'आयव्ही लौकी', 'आयवहि लौकी', 1, 0, 0, 0, 'IvyGourd.jpeg'),
+(24, 'Jackfruit', 'फणस', 'कटहल', 1, 0, 0, 0, 'Jackfruit.jpg'),
+(25, 'Lady Finger', 'भेंडी', 'भिन्डी', 1, 0, 0, 0, 'LadyFinger.jpeg'),
+(26, 'Lemon', 'लिंबू', 'नींबू', 1, 0, 0, 0, 'Lemon.jpeg'),
+(27, 'Malabar Spinach', 'मलबार पालक', 'मलबार पालक', 2, 0, 40, 10, 'MalabarSpinach.jpg'),
+(28, 'Fenugreek', 'मेथी', 'मेंथी', 2, 0, 0, 0, 'Methi.jpg'),
+(29, 'Mint Leaves', 'पुदीना पाने', 'पुदीने की पत्तियां', 2, 0, 0, 0, 'MintLeaves.jpg'),
+(30, 'Mushroom', 'मशरूम', 'मशरूम', 1, 0, 0, 0, 'Mushroom.jpg'),
+(31, 'Mustard Leaves', 'मोहरीची पाने', 'सरसों की पत्तियां', 1, 0, 0, 0, 'MustardLeaves.jpg'),
+(32, 'Onion', 'कांदा ', 'प्याज', 1, 0, 0, 0, 'Onion.jpg'),
+(33, 'Peas', 'वाटाणे', 'मटर', 1, 0, 0, 0, 'Peas.jpg'),
+(34, 'Potato', 'बटाटा', 'आलू', 1, 0, 0, 0, 'Potato.jpg'),
+(35, 'Pumpkin', 'भोपळा', 'कद्दू', 1, 0, 0, 0, 'Pumpkin.jpg'),
+(36, 'Radish Pods', 'मुळा पोड्स', 'मूली की फली', 1, 0, 0, 0, 'RadishPods.jpg'),
+(37, 'Radish', 'मुळा', 'मूली', 1, 0, 0, 0, 'Radish.jpg'),
+(38, 'Raw Banana', 'कच्चा केळी', 'कच्चा केला', 1, 0, 0, 0, 'RawBanana.jpg'),
+(39, 'Red Chilli', 'लाल मिरची', 'लाल मिर्च', 1, 0, 0, 0, 'RedChiili.jpeg'),
+(40, 'Snake Gourd', 'साप लौकी', 'साप लौकी', 1, 0, 0, 0, 'SnakeGourd.jpg'),
+(41, 'Spinach', 'पालक', 'पालक', 2, 0, 0, 0, 'Spinach.jpg'),
+(42, 'Spine Gourd', 'स्पाइन लौकी', 'लौकी', 1, 0, 0, 0, 'SpineGourd.jpeg'),
+(43, 'Sweet Potato', 'रताळे', 'शकरकंद', 1, 0, 0, 0, 'SweetPotato.gif'),
+(44, 'Taro Root', 'तारो जड़', 'तारो जड़', 1, 0, 0, 0, 'TaroRoot.jpg'),
+(45, 'Tomato', 'टोमॅटो', 'टमाटर', 1, 0, 0, 0, 'Tomato.jpg'),
+(46, 'Turnip', 'सलगम', 'शलजम', 1, 0, 0, 0, 'Turnip.png'),
+(47, 'White Pumpkin', 'पांढरा भोपळा', 'सफेद कद्दू', 1, 0, 0, 0, 'WhitePumpin.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item_category`
+--
+
+CREATE TABLE `item_category` (
+  `item_cat` int(3) NOT NULL,
+  `Cat_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item_category`
+--
+
+INSERT INTO `item_category` (`item_cat`, `Cat_name`) VALUES
+(1, 'Fruits'),
+(2, 'Vegetable');
 
 -- --------------------------------------------------------
 
@@ -297,6 +319,12 @@ ALTER TABLE `items`
   ADD PRIMARY KEY (`item_id`);
 
 --
+-- Indexes for table `item_category`
+--
+ALTER TABLE `item_category`
+  ADD PRIMARY KEY (`item_cat`);
+
+--
 -- Indexes for table `owner`
 --
 ALTER TABLE `owner`
@@ -310,7 +338,7 @@ ALTER TABLE `owner`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -328,13 +356,19 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `finalorder`
 --
 ALTER TABLE `finalorder`
-  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `item_category`
+--
+ALTER TABLE `item_category`
+  MODIFY `item_cat` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `owner`
