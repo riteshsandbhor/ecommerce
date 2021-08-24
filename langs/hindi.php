@@ -81,7 +81,9 @@ $lang = array(
     'edit'=>'संपादित करें',
     'edit_item'=>'संपादित आइटम',
     'change_verify_email'=> 'ईमेल बदलें और सत्यापित करें',
-    'verify_email'=> 'ईमेल सत्यापित करें'
+    'verify_email'=> 'ईमेल सत्यापित करें',
+    'all'=>'सब'
+
 
 
 

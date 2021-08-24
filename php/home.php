@@ -91,7 +91,7 @@ if (isset($_SESSION['Custid'])) {
 <div class="col">
   <div class="cont text-center">
     <select class="form-control category customselect classic" name="category" onChange="ruralSelected()" id="category">
-      <option value="0" selected><?php echo lang('category')?></option>
+      <option value="0" selected><?php echo lang('all')?></option>
       <?php
         $query=mysqli_query($con,"SELECT * FROM category");
         $rowcount=mysqli_num_rows($query);

@@ -82,7 +82,8 @@ $lang = array(
     'edit'=> 'EDIT',
     'edit_item'=> 'EDIT ITEM',
     'verify_email'=> 'VERIFY EMAIL',
-    'change_verify_email'=> 'CHANGE AND VERIFY EMAIL'
+    'change_verify_email'=> 'CHANGE AND VERIFY EMAIL',
+    'all'=>'ALL'
 
 
 

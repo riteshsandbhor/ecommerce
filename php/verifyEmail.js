@@ -1,5 +1,6 @@
 id = document.getElementById('#btn');
 const form = document.getElementById('verifyform');
+email = document.getElementById('email').value;
 
 form.onsubmit = (e) =>{
     e.preventDefault();
@@ -14,13 +15,13 @@ btn.onclick = ()=>{
          if(xhr.status == 200){
              let data = xhr.response;
              console.log(data);
-            // if(data == "success"){
-            //     alert('Customer Registered Successfully');
-            //     window.location='./login.php';
-            // }else{
-            //     errortxt.textContent = data;
-            //     errortxt.style.display = "block";
-            // }
+            if(data == "success"){
+                alert('Email is Successfully Send To '+email);
+                window.location='./home.php';
+            }else{
+                alert('Something Went Wrong Error -> '+data);
+                window.location='./home.php';
+            }
         }
     }
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2021 at 07:22 AM
+-- Generation Time: Aug 24, 2021 at 01:00 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -74,7 +74,8 @@ INSERT INTO `cart` (`cart_id`, `c_id`, `item_id`, `weight`, `price`, `o_id`) VAL
 (42, 2, 1, 5, 75, 20),
 (43, 2, 9, 1000, 80, 21),
 (44, 2, 4, 250, 20, 21),
-(53, 13, 84, 2000, 96, 23);
+(53, 13, 84, 2000, 96, 23),
+(54, 13, 2, 250, 10, 24);
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,7 @@ INSERT INTO `customer` (`c_id`, `flag`, `f_name`, `l_name`, `c_address`, `c_pin`
 (3, 0, 'Ritesh', 'Sandbhor', 'Kasturi Lawns Chikanghar Highway Near Sandeep Hotel Behind Pulse Hospital Kalyan West', 421301, 8888741000, 'ritesh@outlook.com', '$2y$10$Ecj1ny/POTrgC5EbCE8I6OInc1Y2rF0tvYvTnbs56qSO6Ld6WTozm', 0, 0),
 (6, 0, 'Ritesh', 'Sandbhor', 'Kasturi lawns', 421301, 9029878, 'deshpande.y@somaiya.edu', '$2y$10$ZQDsUtsne9RxPf0TAydahuFP8E/wO5qrbyAwUt2S1rkBu2Wf1l7Fy', 19.2510093, 73.14233779999999),
 (7, 0, 'Harsh', 'Bhor', 'Thane', 400610, 9221376428, 'hbhor@somaiya.edu', '$2y$10$9b5OEADtVaF1vO2FNqhybuhHY7FYJ3cCs5LziR.EeCWPPh03tlPS.', 19.259511399999997, 73.1454596),
-(13, 0, 'prajwal', 'shelke', 'B/08, bldg no.3,\r\nVenketeshwar nagar,cabin road', 401105, 8433551037, 'prajwalshelke03@gmail.com', '$2y$10$fEzbMltEuAtSS4KhpAtCnesH3NOFgCX4l9p.kMj8e5maY3UoHYhFO', 19.2217088, 72.8530944);
+(13, 1, 'prajwal', 'shelke', 'B/08, bldg no.3,\r\nVenketeshwar nagar,cabin road', 401105, 8433551037, 'prajwalshelke03@gmail.com', '$2y$10$fEzbMltEuAtSS4KhpAtCnesH3NOFgCX4l9p.kMj8e5maY3UoHYhFO', 19.2217088, 72.8530944);
 
 -- --------------------------------------------------------
 
@@ -190,7 +191,8 @@ INSERT INTO `finalorder` (`o_id`, `c_id`, `deliveryboy`, `delivery`, `timeorder`
 (19, 2, 0, 0, 1607514699, 0, 0),
 (20, 2, 4, 1, 1607931861, 1607939303, 1607948198),
 (21, 2, 4, 1, 1607948849, 1607948914, 1607949057),
-(23, 13, 4, 1, 1629702994, 1629720304, 1629720482);
+(23, 13, 4, 1, 1629702994, 1629720304, 1629720482),
+(24, 13, 0, 0, 1629788791, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -216,7 +218,7 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `category_type`, `type`, `quantity`, `price`, `img`) VALUES
 (1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 1, 1, 26, 15, 'AmarnathLeaves.jpg'),
-(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 2, 1, 5000, 10, 'BabyCorn.png'),
+(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 2, 1, 4750, 10, 'BabyCorn.png'),
 (3, 'Beetroot', 'चुकंदर', 'चुकंदर', 1, 1, 0, 10, 'Beetroot.jpg'),
 (4, 'Bitter Gourd', 'कार्ल', 'करेला', 2, 1, 1000, 10, 'BitterGourd.jpeg'),
 (5, 'Bottle Gourd', 'दुधी भोपळा', 'लौकी', 1, 1, 0, 0, 'BottleGourd.jpg'),
@@ -304,6 +306,17 @@ INSERT INTO `type` (`id`, `name`) VALUES
 (2, 'Piece'),
 (3, 'litre');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `verify`
+--
+
+CREATE TABLE `verify` (
+  `id` int(2) NOT NULL,
+  `token` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -366,7 +379,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -390,7 +403,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `finalorder`
 --
 ALTER TABLE `finalorder`
-  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `items`
