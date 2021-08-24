@@ -15,5 +15,8 @@ default:
 	include "english.php";
 	break;
 }
-}
+}else{
+	$_SESSION['language'] = "English";
+	include "english.php";
+  }
 ?>

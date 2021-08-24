@@ -119,13 +119,23 @@
                  $weight=$weight/1000;
               }
             }
-            else {
+            else if ($type==2) {
               $conversion=$weight;
               if ($weight == 1) {
                 $unit="piece";
               }
               else {
                $unit="pieces";
+              }
+            }
+            if ($type==3) {
+              $conversion=$weight/250;
+              if ($weight < 1000) {
+                $unit="ml";
+              }
+              else {
+                 $unit="litre";
+                 $weight=$weight/1000;
               }
             }
               echo '

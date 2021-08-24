@@ -127,7 +127,7 @@ if (isset($_SESSION['Delid'])) {
                      $weight=$weight/1000;
                   }
                 }
-                else {
+                else if ($type==2) {
                   $conversion=$weight;
                   if ($weight == 1) {
                     $unit="piece";
@@ -136,12 +136,22 @@ if (isset($_SESSION['Delid'])) {
                    $unit="pieces";
                   }
                 }
+                if ($type==3) {
+                  $conversion=$weight/250;
+                  if ($weight < 1000) {
+                    $unit="ml";
+                  }
+                  else {
+                     $unit="litre";
+                     $weight=$weight/1000;
+                  }
+                }
                 $finalquantity=$weight;
 
               echo '
               <tr>
                 <th scope="col">'.$row1['i_eng'].'</th>
-                <th scope="col">'.$finalquantity.''.$unit.'</th>
+                <th scope="col">'.$finalquantity.' '.$unit.'</th>
                 <th scope="col">₹'.$finalprice.'</th>
               </tr>';
 

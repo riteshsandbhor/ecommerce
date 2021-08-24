@@ -40,7 +40,7 @@ if (isset($_SESSION['Ownerid'])) {
 </thead>
 <tbody>
     <?php
-    $query = "SELECT * FROM finalorder WHERE delivery=0 && deliveryboy=0 ORDER BY o_id DESC;";
+    $query = "SELECT * FROM finalorder WHERE delivery=0 && deliveryboy=0 ORDER BY o_id ASC;";
     $result = mysqli_query($con, $query);
     if (mysqli_num_rows($result) > 0)
     {

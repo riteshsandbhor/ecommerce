@@ -4,6 +4,8 @@
 error_reporting(E_ALL ^ E_NOTICE);
 if(isset($_GET['lang'])){
 $getLang = trim(filter_var(htmlentities($_GET['lang']),FILTER_SANITIZE_STRING));
+}else{
+  $getLang="english";
 }
 if (!empty($getLang)) {
 $_SESSION['language'] = $getLang;

@@ -5,6 +5,8 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 if(isset($_GET['lang'])){
 $getLang = trim(filter_var(htmlentities($_GET['lang']),FILTER_SANITIZE_STRING));
+}else{
+  $getLang="english";
 }
 if (!empty($getLang)) {
 $_SESSION['language'] = $getLang;
@@ -48,10 +50,10 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'langs'.DIRECTORY_SEPARAT
         <a class="nav-link active" href="./delivered.php">Delivered</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="./itemoption.php">STOCKS</a>
+        <a class="nav-link active" href="./additems.php">Add Item</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="./item.php">Items</a>
+        <a class="nav-link active" href="./itemoption.php">STOCKS</a>
       </li>
       <li class="nav-item">
         <a class="nav-link active" href="./dregister.php">Register</a>

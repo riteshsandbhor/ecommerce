@@ -3,77 +3,81 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPA
 session_start();
 if (isset($_SESSION['Custid'])) {
   $id=$_SESSION['Custid'];
-  if (isset($_POST['deleteitem'])) {
-    $cartid=$_POST['cartid'];
-    $query= "DELETE FROM `cart` WHERE cart_id=$cartid";
-   $result = mysqli_query($con, $query);
-   echo "<script type='text/javascript'>
-   alert('Item Deleted');
-    window.location='./cart.php';
-      </script>";
-      }
-      if (isset($_POST['finalorder'])) {
-       $query= "SELECT * FROM cart WHERE o_id=0 && c_id=$id ";
-       $result = mysqli_query($con, $query);
-       // $resultfinal=$result;
-       $goforload=1;
-       if (mysqli_num_rows($result) > 0)
-       {
-           while ($row1 = mysqli_fetch_assoc($result)) {
-                $iid=$row1['item_id'];
-             $query12 = "SELECT * FROM items WHERE item_id=$iid";
-             $result12 = mysqli_query($con, $query12);
-             $row12 = mysqli_fetch_assoc($result12);
-             $type=$row12['type'];
-             $quantity=$row12['quantity'];
-             $weight=$row1['weight'];
-             if ($quantity < $weight) {
-                    $goforload=0;
+  $sql = mysqli_query($con, "SELECT * FROM customer WHERE c_id = {$id}");
+  $fetch = mysqli_fetch_assoc($sql);
+  $flag = (int) $fetch['flag'];
+  if($flag == 0){
+    header("Location: ./verifyMail.php?id=$id");
+  }else{
+    if (isset($_POST['deleteitem'])) {
+      $cartid=$_POST['cartid'];
+      $query= "DELETE FROM `cart` WHERE cart_id=$cartid";
+      $result = mysqli_query($con, $query);
+      echo "<script type='text/javascript'>
+      alert('Item Deleted');
+        window.location='./cart.php';
+          </script>";
+    }
+    if (isset($_POST['finalorder'])) {
+      $query= "SELECT * FROM cart WHERE o_id=0 && c_id=$id ";
+      $result = mysqli_query($con, $query);
+      // $resultfinal=$result;
+      $goforload=1;
+      if (mysqli_num_rows($result) > 0)
+      {
+        while ($row1 = mysqli_fetch_assoc($result)) {
+            $iid=$row1['item_id'];
+          $query12 = "SELECT * FROM items WHERE item_id=$iid";
+          $result12 = mysqli_query($con, $query12);
+          $row12 = mysqli_fetch_assoc($result12);
+          $type=$row12['type'];
+          $quantity=$row12['quantity'];
+          $weight=$row1['weight'];
+          if ($quantity < $weight) {
+                $goforload=0;
+          }
+        }
+             if ($goforload==0) {
+               echo "<script type='text/javascript'>
+               alert('Some items are out of stock.');
+                window.location='./cart.php';
+                  </script>";
              }
-
-           }
-           if ($goforload==0) {
-             echo "<script type='text/javascript'>
-             alert('Some items are out of stock.');
-              window.location='./cart.php';
-                </script>";
-
-           }
-           else {
-             $currenttime=time();
-             $query= "INSERT INTO `finalorder`(`c_id`, `timeorder`) VALUES ($id,$currenttime)";
-             $result = mysqli_query($con, $query);
-
-             $query1= "SELECT * FROM finalorder WHERE c_id=$id && timeorder=$currenttime";
-             $result1 = mysqli_query($con, $query1);
-             $row123 = mysqli_fetch_assoc($result1);
-             $oredrid=$row123['o_id'];
-             $query178= "SELECT * FROM cart WHERE o_id=0 && c_id=$id";
-             $result178 = mysqli_query($con, $query178);
-             if (mysqli_num_rows($result178) > 0)
-             {
-                 while ($row145 = mysqli_fetch_assoc($result178)) {
-
-                   $query179= "SELECT quantity FROM items WHERE item_id=".$row145['item_id'];
-                   $result179 = mysqli_query($con, $query179);
-                   $row179 = mysqli_fetch_assoc($result179);
-                   $quantity=$row179['quantity'];
-                   $weight=$row145['weight'];
-                   $finalquantity=$quantity-$weight;
-                   $query176= "UPDATE items SET quantity=$finalquantity WHERE item_id=".$row145['item_id'];
-                   $result176 = mysqli_query($con, $query176);
-                   $query12= "UPDATE cart SET o_id=$oredrid WHERE cart_id=".$row145['cart_id'];
-                   $result12 = mysqli_query($con, $query12);
-                   echo "<script type='text/javascript'>
-                   alert('Your Order is Placed');
-                    window.location='./orders.php';
-                      </script>";
+             else {
+               $currenttime=time();
+               $query= "INSERT INTO `finalorder`(`c_id`, `timeorder`) VALUES ($id,$currenttime)";
+               $result = mysqli_query($con, $query);
+  
+               $query1= "SELECT * FROM finalorder WHERE c_id=$id && timeorder=$currenttime";
+               $result1 = mysqli_query($con, $query1);
+               $row123 = mysqli_fetch_assoc($result1);
+               $oredrid=$row123['o_id'];
+               $query178= "SELECT * FROM cart WHERE o_id=0 && c_id=$id";
+               $result178 = mysqli_query($con, $query178);
+               if (mysqli_num_rows($result178) > 0)
+               {
+                   while ($row145 = mysqli_fetch_assoc($result178)) {
+  
+                     $query179= "SELECT quantity FROM items WHERE item_id=".$row145['item_id'];
+                     $result179 = mysqli_query($con, $query179);
+                     $row179 = mysqli_fetch_assoc($result179);
+                     $quantity=$row179['quantity'];
+                     $weight=$row145['weight'];
+                     $finalquantity=$quantity-$weight;
+                     $query176= "UPDATE items SET quantity=$finalquantity WHERE item_id=".$row145['item_id'];
+                     $result176 = mysqli_query($con, $query176);
+                     $query12= "UPDATE cart SET o_id=$oredrid WHERE cart_id=".$row145['cart_id'];
+                     $result12 = mysqli_query($con, $query12);
+                     echo "<script type='text/javascript'>
+                     alert('Your Order is Placed');
+                      window.location='./orders.php';
+                        </script>";
+                   }
                  }
-               }
+             }
            }
-         }
-      }
-
+        }
+  }
 }else {
   header("Location: ./home.php");
 }
@@ -134,7 +138,7 @@ if (isset($_SESSION['Custid'])) {
               $weight=$weight/1000;
            }
          }
-         else {
+         else if ($type==2) {
            $finalprice=$price;
            $totalfinalprice=$totalfinalprice+$finalprice;
            if ($weight == 1) {
@@ -144,6 +148,17 @@ if (isset($_SESSION['Custid'])) {
             $unit="pieces";
            }
          }
+         if ($type==3) {
+          $finalprice=$price;
+         $totalfinalprice=$totalfinalprice+$finalprice;
+         if ($weight < 1000) {
+           $unit="ml";
+         }
+         else {
+            $unit="litre";
+            $weight=$weight/1000;
+         }
+       }
 
          echo '
          <div class="subcontain1 box">

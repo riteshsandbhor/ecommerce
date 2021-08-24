@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2021 at 04:18 PM
+-- Generation Time: Aug 24, 2021 at 07:22 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -74,8 +74,27 @@ INSERT INTO `cart` (`cart_id`, `c_id`, `item_id`, `weight`, `price`, `o_id`) VAL
 (42, 2, 1, 5, 75, 20),
 (43, 2, 9, 1000, 80, 21),
 (44, 2, 4, 250, 20, 21),
-(45, 2, 1, 1, 15, 22),
-(46, 2, 2, 500, 20, 22);
+(53, 13, 84, 2000, 96, 23);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(2) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Vegetable'),
+(2, 'Fruits'),
+(3, 'Milk');
 
 -- --------------------------------------------------------
 
@@ -85,6 +104,7 @@ INSERT INTO `cart` (`cart_id`, `c_id`, `item_id`, `weight`, `price`, `o_id`) VAL
 
 CREATE TABLE `customer` (
   `c_id` int(11) NOT NULL,
+  `flag` int(1) NOT NULL,
   `f_name` varchar(50) NOT NULL,
   `l_name` varchar(50) NOT NULL,
   `c_address` text NOT NULL,
@@ -100,11 +120,12 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`c_id`, `f_name`, `l_name`, `c_address`, `c_pin`, `c_phone`, `c_email`, `c_password`, `latitude`, `longitude`) VALUES
-(2, 'Ritesh ', 'Sandbhor', '403,(B) WING, KASTURI LAWNS, CHIKANGHAR HIGHWAY, NEAR SANDEEP HOTEL, BEHIND PULSE HOSPITAL,KALYAN (WEST).', 421301, 9167703475, 'ritesh.sandbhor@somaiya.edu', '$2y$10$91PLzqK77NhHjkqWZ2ztiu96/b0HFwguWefejUzfZOyI0bFCONfj.', 19.2598509, 19.2598509),
-(3, 'Ritesh', 'Sandbhor', 'Kasturi Lawns Chikanghar Highway Near Sandeep Hotel Behind Pulse Hospital Kalyan West', 421301, 8888741000, 'ritesh@outlook.com', '$2y$10$Ecj1ny/POTrgC5EbCE8I6OInc1Y2rF0tvYvTnbs56qSO6Ld6WTozm', 0, 0),
-(6, 'Ritesh', 'Sandbhor', 'Kasturi lawns', 421301, 9029878, 'deshpande.y@somaiya.edu', '$2y$10$ZQDsUtsne9RxPf0TAydahuFP8E/wO5qrbyAwUt2S1rkBu2Wf1l7Fy', 19.2510093, 73.14233779999999),
-(7, 'Harsh', 'Bhor', 'Thane', 400610, 9221376428, 'hbhor@somaiya.edu', '$2y$10$9b5OEADtVaF1vO2FNqhybuhHY7FYJ3cCs5LziR.EeCWPPh03tlPS.', 19.259511399999997, 73.1454596);
+INSERT INTO `customer` (`c_id`, `flag`, `f_name`, `l_name`, `c_address`, `c_pin`, `c_phone`, `c_email`, `c_password`, `latitude`, `longitude`) VALUES
+(2, 0, 'Ritesh ', 'Sandbhor', '403,(B) WING, KASTURI LAWNS, CHIKANGHAR HIGHWAY, NEAR SANDEEP HOTEL, BEHIND PULSE HOSPITAL,KALYAN (WEST).', 421301, 9167703475, 'ritesh.sandbhor@somaiya.edu', '$2y$10$91PLzqK77NhHjkqWZ2ztiu96/b0HFwguWefejUzfZOyI0bFCONfj.', 19.2598509, 19.2598509),
+(3, 0, 'Ritesh', 'Sandbhor', 'Kasturi Lawns Chikanghar Highway Near Sandeep Hotel Behind Pulse Hospital Kalyan West', 421301, 8888741000, 'ritesh@outlook.com', '$2y$10$Ecj1ny/POTrgC5EbCE8I6OInc1Y2rF0tvYvTnbs56qSO6Ld6WTozm', 0, 0),
+(6, 0, 'Ritesh', 'Sandbhor', 'Kasturi lawns', 421301, 9029878, 'deshpande.y@somaiya.edu', '$2y$10$ZQDsUtsne9RxPf0TAydahuFP8E/wO5qrbyAwUt2S1rkBu2Wf1l7Fy', 19.2510093, 73.14233779999999),
+(7, 0, 'Harsh', 'Bhor', 'Thane', 400610, 9221376428, 'hbhor@somaiya.edu', '$2y$10$9b5OEADtVaF1vO2FNqhybuhHY7FYJ3cCs5LziR.EeCWPPh03tlPS.', 19.259511399999997, 73.1454596),
+(13, 0, 'prajwal', 'shelke', 'B/08, bldg no.3,\r\nVenketeshwar nagar,cabin road', 401105, 8433551037, 'prajwalshelke03@gmail.com', '$2y$10$fEzbMltEuAtSS4KhpAtCnesH3NOFgCX4l9p.kMj8e5maY3UoHYhFO', 19.2217088, 72.8530944);
 
 -- --------------------------------------------------------
 
@@ -169,7 +190,7 @@ INSERT INTO `finalorder` (`o_id`, `c_id`, `deliveryboy`, `delivery`, `timeorder`
 (19, 2, 0, 0, 1607514699, 0, 0),
 (20, 2, 4, 1, 1607931861, 1607939303, 1607948198),
 (21, 2, 4, 1, 1607948849, 1607948914, 1607949057),
-(22, 2, 4, 1, 1629293975, 1629294053, 1629294244);
+(23, 13, 4, 1, 1629702994, 1629720304, 1629720482);
 
 -- --------------------------------------------------------
 
@@ -182,8 +203,8 @@ CREATE TABLE `items` (
   `i_eng` varchar(100) NOT NULL,
   `i_mar` varchar(100) NOT NULL,
   `i_hin` varchar(100) NOT NULL,
+  `category_type` int(11) NOT NULL,
   `type` int(11) NOT NULL COMMENT '1-grams,2-gadi',
-  `item_category` int(2) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `img` text NOT NULL
@@ -193,73 +214,54 @@ CREATE TABLE `items` (
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `type`, `item_category`, `quantity`, `price`, `img`) VALUES
-(1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 2, 0, 25, 15, 'AmarnathLeaves.jpg'),
-(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 1, 0, 2000, 20, 'BabyCorn.png'),
-(3, 'Beetroot', 'चुकंदर', 'चुकंदर', 1, 0, 0, 10, 'Beetroot.jpg'),
-(4, 'Bitter Gourd', 'कार्ल', 'करेला', 1, 0, 1000, 10, 'BitterGourd.jpeg'),
-(5, 'Bottle Gourd', 'दुधी भोपळा', 'लौकी', 1, 0, 0, 0, 'BottleGourd.jpg'),
-(6, 'Cabbage', 'कोबी', 'पत्ता गोभी', 1, 0, 15500, 12, 'Cabbage.jpg'),
-(7, 'Capsicum', 'शिमला मिर्ची', 'शिमला मिर्च', 1, 0, 0, 0, 'Capsicum.jpg'),
-(8, 'Carrot', 'गाजर', 'गाजर', 1, 0, 0, 0, 'Carrot.jpg'),
-(9, 'Cauliflower', 'फुल कोबी', 'गोभी', 1, 0, 0, 20, 'Cauliflower.jpg'),
-(10, 'Chilli', 'मिरची', 'मिर्च', 1, 0, 0, 0, 'Chilli.jpeg'),
-(11, 'Cluster Beans', 'गवार', 'गवार', 1, 0, 0, 0, 'ClusterBeans.png'),
-(12, 'Coconut', 'नारळ', 'नारियल', 2, 0, 2, 20, 'Coconut.jpg'),
-(13, 'Coriander', 'कोथिंबीर', 'धनिया', 2, 0, 0, 0, 'CorianderLeaves.jpeg'),
-(14, 'Corn', 'मका', 'मक्का', 1, 0, 0, 0, 'Corn.jpg'),
-(15, 'Curry Leaves', 'कडीपत्ता', 'करी पत्ते', 1, 0, 0, 0, 'CurryLeaves.jpg'),
-(16, 'Dill Leaves', 'बडीशेप पाने', 'डिल पत्तियां', 1, 0, 0, 0, 'DillLeaves.jpg'),
-(17, 'Drumsticks', 'शेवग्यच्य शेंगा', 'सहजन की फल्ली', 1, 0, 0, 0, 'Drumsticks.jpg'),
-(18, 'Eggplant', 'वांगं', 'बैंगन', 1, 0, 0, 0, 'Eggplant.jpg'),
-(19, 'Flat Green Beans', 'हिरव्या शेंगा', 'हरी सेम', 1, 0, 0, 0, 'FlatGreenBeans.jpg'),
-(20, 'French Beans', 'फरसबी', 'फरास बीन', 1, 0, 0, 0, 'FrenchBeans.jpg'),
-(21, 'Garlic', 'लसूण', 'लहसुन', 1, 0, 0, 0, 'Garlic.png'),
-(22, 'Ginger', 'आले', 'अदरक', 2, 0, 0, 0, 'Ginger.jpg'),
-(23, 'Ivy Gourd', 'आयव्ही लौकी', 'आयवहि लौकी', 1, 0, 0, 0, 'IvyGourd.jpeg'),
-(24, 'Jackfruit', 'फणस', 'कटहल', 1, 0, 0, 0, 'Jackfruit.jpg'),
-(25, 'Lady Finger', 'भेंडी', 'भिन्डी', 1, 0, 0, 0, 'LadyFinger.jpeg'),
-(26, 'Lemon', 'लिंबू', 'नींबू', 1, 0, 0, 0, 'Lemon.jpeg'),
-(27, 'Malabar Spinach', 'मलबार पालक', 'मलबार पालक', 2, 0, 40, 10, 'MalabarSpinach.jpg'),
-(28, 'Fenugreek', 'मेथी', 'मेंथी', 2, 0, 0, 0, 'Methi.jpg'),
-(29, 'Mint Leaves', 'पुदीना पाने', 'पुदीने की पत्तियां', 2, 0, 0, 0, 'MintLeaves.jpg'),
-(30, 'Mushroom', 'मशरूम', 'मशरूम', 1, 0, 0, 0, 'Mushroom.jpg'),
-(31, 'Mustard Leaves', 'मोहरीची पाने', 'सरसों की पत्तियां', 1, 0, 0, 0, 'MustardLeaves.jpg'),
-(32, 'Onion', 'कांदा ', 'प्याज', 1, 0, 0, 0, 'Onion.jpg'),
-(33, 'Peas', 'वाटाणे', 'मटर', 1, 0, 0, 0, 'Peas.jpg'),
-(34, 'Potato', 'बटाटा', 'आलू', 1, 0, 0, 0, 'Potato.jpg'),
-(35, 'Pumpkin', 'भोपळा', 'कद्दू', 1, 0, 0, 0, 'Pumpkin.jpg'),
-(36, 'Radish Pods', 'मुळा पोड्स', 'मूली की फली', 1, 0, 0, 0, 'RadishPods.jpg'),
-(37, 'Radish', 'मुळा', 'मूली', 1, 0, 0, 0, 'Radish.jpg'),
-(38, 'Raw Banana', 'कच्चा केळी', 'कच्चा केला', 1, 0, 0, 0, 'RawBanana.jpg'),
-(39, 'Red Chilli', 'लाल मिरची', 'लाल मिर्च', 1, 0, 0, 0, 'RedChiili.jpeg'),
-(40, 'Snake Gourd', 'साप लौकी', 'साप लौकी', 1, 0, 0, 0, 'SnakeGourd.jpg'),
-(41, 'Spinach', 'पालक', 'पालक', 2, 0, 0, 0, 'Spinach.jpg'),
-(42, 'Spine Gourd', 'स्पाइन लौकी', 'लौकी', 1, 0, 0, 0, 'SpineGourd.jpeg'),
-(43, 'Sweet Potato', 'रताळे', 'शकरकंद', 1, 0, 0, 0, 'SweetPotato.gif'),
-(44, 'Taro Root', 'तारो जड़', 'तारो जड़', 1, 0, 0, 0, 'TaroRoot.jpg'),
-(45, 'Tomato', 'टोमॅटो', 'टमाटर', 1, 0, 0, 0, 'Tomato.jpg'),
-(46, 'Turnip', 'सलगम', 'शलजम', 1, 0, 0, 0, 'Turnip.png'),
-(47, 'White Pumpkin', 'पांढरा भोपळा', 'सफेद कद्दू', 1, 0, 0, 0, 'WhitePumpin.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `item_category`
---
-
-CREATE TABLE `item_category` (
-  `item_cat` int(3) NOT NULL,
-  `Cat_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `item_category`
---
-
-INSERT INTO `item_category` (`item_cat`, `Cat_name`) VALUES
-(1, 'Fruits'),
-(2, 'Vegetable');
+INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `category_type`, `type`, `quantity`, `price`, `img`) VALUES
+(1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 1, 1, 26, 15, 'AmarnathLeaves.jpg'),
+(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 2, 1, 5000, 10, 'BabyCorn.png'),
+(3, 'Beetroot', 'चुकंदर', 'चुकंदर', 1, 1, 0, 10, 'Beetroot.jpg'),
+(4, 'Bitter Gourd', 'कार्ल', 'करेला', 2, 1, 1000, 10, 'BitterGourd.jpeg'),
+(5, 'Bottle Gourd', 'दुधी भोपळा', 'लौकी', 1, 1, 0, 0, 'BottleGourd.jpg'),
+(6, 'Cabbage', 'कोबी', 'पत्ता गोभी', 2, 1, 15500, 12, 'Cabbage.jpg'),
+(7, 'Capsicum', 'शिमला मिर्ची', 'शिमला मिर्च', 0, 1, 0, 0, 'Capsicum.jpg'),
+(9, 'Cauliflower', 'फुल कोबी', 'गोभी', 0, 1, 0, 20, 'Cauliflower.jpg'),
+(10, 'Chilli', 'मिरची', 'मिर्च', 0, 1, 0, 0, 'Chilli.jpeg'),
+(11, 'Cluster Beans', 'गवार', 'गवार', 0, 1, 0, 0, 'ClusterBeans.png'),
+(12, 'Coconut', 'नारळ', 'नारियल', 1, 2, 2, 20, 'Coconut.jpg'),
+(13, 'Coriander', 'कोथिंबीर', 'धनिया', 0, 2, 0, 0, 'CorianderLeaves.jpeg'),
+(14, 'Corn', 'मका', 'मक्का', 0, 1, 0, 0, 'Corn.jpg'),
+(15, 'Curry Leaves', 'कडीपत्ता', 'करी पत्ते', 0, 1, 0, 0, 'CurryLeaves.jpg'),
+(16, 'Dill Leaves', 'बडीशेप पाने', 'डिल पत्तियां', 0, 1, 0, 0, 'DillLeaves.jpg'),
+(17, 'Drumsticks', 'शेवग्यच्य शेंगा', 'सहजन की फल्ली', 0, 1, 0, 0, 'Drumsticks.jpg'),
+(18, 'Eggplant', 'वांगं', 'बैंगन', 0, 1, 0, 0, 'Eggplant.jpg'),
+(19, 'Flat Green Beans', 'हिरव्या शेंगा', 'हरी सेम', 0, 1, 0, 0, 'FlatGreenBeans.jpg'),
+(20, 'French Beans', 'फरसबी', 'फरास बीन', 0, 1, 0, 0, 'FrenchBeans.jpg'),
+(21, 'Garlic', 'लसूण', 'लहसुन', 0, 1, 0, 0, 'Garlic.png'),
+(22, 'Ginger', 'आले', 'अदरक', 0, 2, 0, 0, 'Ginger.jpg'),
+(23, 'Ivy Gourd', 'आयव्ही लौकी', 'आयवहि लौकी', 0, 1, 0, 0, 'IvyGourd.jpeg'),
+(24, 'Jackfruit', 'फणस', 'कटहल', 0, 1, 0, 0, 'Jackfruit.jpg'),
+(25, 'Lady Finger', 'भेंडी', 'भिन्डी', 0, 1, 0, 0, 'LadyFinger.jpeg'),
+(26, 'Lemon', 'लिंबू', 'नींबू', 0, 1, 0, 0, 'Lemon.jpeg'),
+(27, 'Malabar Spinach', 'मलबार पालक', 'मलबार पालक', 0, 2, 40, 10, 'MalabarSpinach.jpg'),
+(28, 'Fenugreek', 'मेथी', 'मेंथी', 0, 2, 0, 0, 'Methi.jpg'),
+(29, 'Mint Leaves', 'पुदीना पाने', 'पुदीने की पत्तियां', 0, 2, 0, 0, 'MintLeaves.jpg'),
+(30, 'Mushroom', 'मशरूम', 'मशरूम', 0, 1, 0, 0, 'Mushroom.jpg'),
+(31, 'Mustard Leaves', 'मोहरीची पाने', 'सरसों की पत्तियां', 0, 1, 0, 0, 'MustardLeaves.jpg'),
+(32, 'Onion', 'कांदा ', 'प्याज', 0, 1, 0, 0, 'Onion.jpg'),
+(33, 'Peas', 'वाटाणे', 'मटर', 0, 1, 0, 0, 'Peas.jpg'),
+(34, 'Potato', 'बटाटा', 'आलू', 0, 1, 0, 0, 'Potato.jpg'),
+(35, 'Pumpkin', 'भोपळा', 'कद्दू', 0, 1, 0, 0, 'Pumpkin.jpg'),
+(36, 'Radish Pods', 'मुळा पोड्स', 'मूली की फली', 0, 1, 0, 0, 'RadishPods.jpg'),
+(37, 'Radish', 'मुळा', 'मूली', 0, 1, 0, 0, 'Radish.jpg'),
+(38, 'Raw Banana', 'कच्चा केळी', 'कच्चा केला', 0, 1, 0, 0, 'RawBanana.jpg'),
+(39, 'Red Chilli', 'लाल मिरची', 'लाल मिर्च', 0, 1, 0, 0, 'RedChiili.jpeg'),
+(40, 'Snake Gourd', 'साप लौकी', 'साप लौकी', 0, 1, 0, 0, 'SnakeGourd.jpg'),
+(41, 'Spinach', 'पालक', 'पालक', 0, 2, 0, 0, 'Spinach.jpg'),
+(42, 'Spine Gourd', 'स्पाइन लौकी', 'लौकी', 0, 1, 0, 0, 'SpineGourd.jpeg'),
+(43, 'Sweet Potato', 'रताळे', 'शकरकंद', 0, 1, 0, 0, 'SweetPotato.gif'),
+(44, 'Taro Root', 'तारो जड़', 'तारो जड़', 0, 1, 0, 0, 'TaroRoot.jpg'),
+(45, 'Tomato', 'टोमॅटो', 'टमाटर', 0, 1, 0, 0, 'Tomato.jpg'),
+(46, 'Turnip', 'सलगम', 'शलजम', 0, 1, 0, 0, 'Turnip.png'),
+(47, 'White Pumpkin', 'पांढरा भोपळा', 'सफेद कद्दू', 0, 1, 0, 0, 'WhitePumpin.jpg'),
+(84, 'Amul Milk', 'अमूल दूध', 'अमूल दूध', 3, 3, 7000, 12, '1629700977amul milk.jpg');
 
 -- --------------------------------------------------------
 
@@ -282,6 +284,26 @@ CREATE TABLE `owner` (
 INSERT INTO `owner` (`owner_id`, `f_name`, `l_name`, `email`, `password`) VALUES
 (1, 'Yash', 'Deshpande', 'farmfresh@gmail.com', '$2y$10$91PLzqK77NhHjkqWZ2ztiu96/b0HFwguWefejUzfZOyI0bFCONfj.');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `type`
+--
+
+CREATE TABLE `type` (
+  `id` int(2) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `type`
+--
+
+INSERT INTO `type` (`id`, `name`) VALUES
+(1, 'Kilogram'),
+(2, 'Piece'),
+(3, 'litre');
+
 --
 -- Indexes for dumped tables
 --
@@ -291,6 +313,12 @@ INSERT INTO `owner` (`owner_id`, `f_name`, `l_name`, `email`, `password`) VALUES
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cart_id`);
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customer`
@@ -319,16 +347,16 @@ ALTER TABLE `items`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Indexes for table `item_category`
---
-ALTER TABLE `item_category`
-  ADD PRIMARY KEY (`item_cat`);
-
---
 -- Indexes for table `owner`
 --
 ALTER TABLE `owner`
   ADD PRIMARY KEY (`owner_id`);
+
+--
+-- Indexes for table `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -338,13 +366,19 @@ ALTER TABLE `owner`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -356,25 +390,25 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `finalorder`
 --
 ALTER TABLE `finalorder`
-  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
---
--- AUTO_INCREMENT for table `item_category`
---
-ALTER TABLE `item_category`
-  MODIFY `item_cat` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
   MODIFY `owner_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `type`
+--
+ALTER TABLE `type`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

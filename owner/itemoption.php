@@ -64,15 +64,15 @@ if (isset($_SESSION['Ownerid'])) {
   <div class="row">
     <div class="col">
       <div class="form-group">
-      <label for quantity><b>Quantity (Grams)</b> </label>
-        <input type="number" name="quantity" class="form-control"id="quantity" placeholder="Quantity in Grams">
+      <label for quantity><b>Quantity (Grams, ml, piece)</b> </label>
+        <input type="number" name="quantity" class="form-control"id="quantity" placeholder="Quantity in (Grams, ml, piece)">
          <span id="quamsg"></span>
       </div>
     </div>
     <div class="col">
       <div class="form-group">
-      <label for price><b>Price (for 250 grams)</b> </label>
-        <input type="number" name="price" class="form-control"id="price" placeholder="Price for 250 grams">
+      <label for price><b>Price (for 250g, 250ml, 1 Piece)</b> </label>
+        <input type="number" name="price" class="form-control"id="price" placeholder="Price (for 250g, 250ml, 1 Piece)">
       <span id="primsg"></span>
       </div>
     </div>
@@ -92,7 +92,7 @@ if (isset($_SESSION['Ownerid'])) {
   <tr>
     <th scope="col">Items</th>
     <th scope="col">Quantity</th>
-    <th scope="col">Price per 250g</th>
+    <th scope="col">Price (per 250g, 250ml, 1 Piece)</th>
   </tr>
 </thead>
 <tbody>
@@ -109,7 +109,7 @@ if (isset($_SESSION['Ownerid'])) {
                 $fquantity=$quantity/1000;
                 $unit="kg";
               }
-              else {
+              else if ($type==2) {
                 $fquantity=$quantity;
                 if ($fquantity==1) {
                   $unit="piece";
@@ -117,6 +117,9 @@ if (isset($_SESSION['Ownerid'])) {
                 else {
                 $unit="pieces";
                 }
+              }else if ($type==3) {
+                $fquantity=$quantity/1000;
+                $unit="litre";
               }
             echo '
             <tr>

@@ -69,7 +69,18 @@ $lang = array(
     'outofstock'=>'साठा संपला',
     'available'=>'उपलब्ध',
     'logout'=>'लॉग आउट',
-    'add_more_items'=>'अधिक खरेदी करा'
+    'add_more_items'=>'अधिक खरेदी करा',
+    'add_new_item'=>'Add New Item',
+    'name'=>'इंग्रजी-मध्ये-नाव',
+    'hname'=>"हिंदी-मध्ये-नाव",
+    'mname'=>'मराठी-मध्य-नाव',
+    'add'=>'सामान जोडा',
+    'category'=>'श्रेणी',
+    'type'=>'प्रकार',
+    'edit'=>'संपादन करा',
+    'edit_item'=>'आयटम संपादित करा',
+    'change_verify_email'=> 'ईमेल बदला आणि सत्यापित करा',
+    'verify_email'=> 'ईमेल सत्यापित करा'
 
 
 

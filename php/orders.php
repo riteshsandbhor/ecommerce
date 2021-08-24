@@ -59,7 +59,7 @@ if (isset($_SESSION['logintype'])) {
               $weight=$weight/1000;
            }
          }
-         else {
+         else if ($type==2) {
            $conversion=$weight;
            $finalprice=$basicprize*$conversion;
            $totalfinalprice=$totalfinalprice+$finalprice;
@@ -70,6 +70,18 @@ if (isset($_SESSION['logintype'])) {
             $unit="pieces";
            }
          }
+         else if ($type==3) {
+          $conversion=$weight/250;
+          $finalprice=$basicprize*$conversion;
+          $totalfinalprice=$totalfinalprice+$finalprice;
+          if ($weight < 1000) {
+            $unit="ml";
+          }
+          else {
+             $unit="ltr";
+             $weight=$weight/1000;
+          }
+        }
 
          echo '
          <div class="subcontain1 box">
