@@ -1,11 +1,11 @@
   <?php
   include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
   session_start();
-  if (isset($_SESSION['Ownerid'])) {
-    $id=$_SESSION['Ownerid'];
-    }else {
-    header("Location: ./ownerlogin.php");
-  }
+  // if (isset($_SESSION['Ownerid'])) {
+  //   $id=$_SESSION['Ownerid'];
+  //   }else {
+  //   header("Location: ./ownerlogin.php");
+  // }
   if (isset($_SESSION['Ownerid'])) {
     $id=$_SESSION['Ownerid'];
     if (isset($_POST['vieworderitems'])) {
@@ -68,6 +68,10 @@
       $query13 = "SELECT * FROM customer WHERE c_id=$cid;";
       $result13 = mysqli_query($con, $query13);
       $row13 = mysqli_fetch_assoc($result13);
+      $sql = mysqli_query($con, "SELECT * FROM finalorder WHERE o_id={$orderid}");
+      $fetch = mysqli_fetch_assoc($sql);
+      $payment_id = $fetch['payment_id'];
+
        ?>
       <h4 style="text-align:center;">Order ID:&nbsp;<?php echo $orderid; ?></h4>
       <h5>Name : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row13['f_name']; ?> <?php echo $row13['l_name']; ?> </h5>
@@ -77,13 +81,21 @@
       <?php if (isset($_POST['deliveryboyid'])) { ?>
         <h5>Delivered By :&nbsp; <?php echo $deliverboy; ?></h5>
       <?php } ?>
-  <h5>Ordered At :&nbsp;&nbsp;&nbsp; <?php echo $ordertime; ?></h5>
-  <?php if (isset($dispatchtime)) { ?>
-  <h5>Dispatched At:<?php echo $dispatchtime; ?></h5>
-  <?php } ?>
-  <?php if (isset($delivertime)) { ?>
-  <h5>Delivered At:&nbsp;&nbsp;&nbsp;<?php echo $delivertime; ?></h5>
-  <?php } ?>
+      <h5>Ordered At :&nbsp;&nbsp;&nbsp; <?php echo $ordertime; ?></h5>
+      <?php if (isset($dispatchtime)) { ?>
+      <h5>Dispatched At:<?php echo $dispatchtime; ?></h5>
+      <?php } ?>
+      <?php if (isset($delivertime)) { ?>
+      <h5>Delivered At:&nbsp;&nbsp;&nbsp;<?php echo $delivertime; ?></h5>
+      <?php } ?>
+      <?php if ($payment_id != "COD") { ?>
+      <h5>Payment TYPE:&nbsp;&nbsp;&nbsp;ONLINE</h5>
+      <h5>Payment ID:&nbsp;&nbsp;&nbsp;<?php echo $payment_id; ?></h5>
+      <?php }else{ ?>
+      <h5>Payment TYPE:&nbsp;&nbsp;&nbsp;COD</h5>
+      <?php } ?>
+
+ 
       <br><br>
     <table class="table table-hover" style="padding:20px;">
     <thead>

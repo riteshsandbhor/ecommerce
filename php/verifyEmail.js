@@ -8,6 +8,7 @@ form.onsubmit = (e) =>{
 
 btn.onclick = ()=>{
     //Ajax
+    btn.classList.toggle('button--loading');
     let xhr = new XMLHttpRequest(); //creating XML object
     xhr.open("POST", "./verifyEmailbackend.php", true);
     xhr.onload = ()=>{

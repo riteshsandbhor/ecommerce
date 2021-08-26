@@ -1,0 +1,84 @@
+btn = document.getElementById('payBtn');
+btnCod = document.getElementById('payBtnCod');
+amount = document.getElementById('amount').value;
+const form = document.getElementById('paymentform');
+form.onsubmit = (e)=>{
+    e.preventDefault();//preventing form from submitting
+}
+
+var options = {
+    "key": "rzp_test_vBY5UEWW8EUUGX", // Enter the Key ID generated from the Dashboard
+    "amount": amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Farm Fresh",
+    "description": "Payment",
+    "image": "../images/Logo.png",
+    "handler": function (response){
+        dbhandler(response);
+    }
+    
+};
+var rzp1 = new Razorpay(options);
+btn.onclick = function(){
+    rzp1.open();
+}
+
+btnCod.onclick = function(){
+    //Ajax
+    let xhr = new XMLHttpRequest(); //creating XML object
+    xhr.open("POST", "./placingOrderBackend.php?payment_method=cod&payment_id=COD", true);
+    xhr.onload = ()=>{
+    if(xhr.readyState == XMLHttpRequest.DONE){
+        if(xhr.status == 200){
+            let data = xhr.response;
+            console.log(data);
+            if(data == "outofstock"){
+                alert('Some items are out of stock.');
+                window.location='./cart.php';
+            }else if(data == "success"){
+                alert('Your Order is Placed');
+                window.location='./orders.php';
+            }else{
+                alert(data);
+                window.location='./cart.php';
+            }
+            }
+        }
+    }
+    // Sending data from Ajax to php
+    let formData = new FormData(form); //creating new formData
+    xhr.send(formData); // sending form data to php
+}
+
+function dbhandler(res){
+    if(res != null){
+        //Ajax
+        let xhr = new XMLHttpRequest(); //creating XML object
+        xhr.open("POST", "./placingOrderBackend.php?payment_method=online&payment_id="+res.razorpay_payment_id, true);
+        xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+                let data = xhr.response;
+                console.log(data);
+                if(data == "outofstock"){
+                    alert('Some items are out of stock.');
+                    window.location='./cart.php';
+                }else if(data == "success"){
+                    alert('Your Order is Placed');
+                    window.location='./orders.php';
+                }else{
+                    alert(data);
+                    window.location='./cart.php';
+                }
+                }
+            }
+        }
+        // Sending data from Ajax to php
+        let formData = new FormData(form); //creating new formData
+        xhr.send(formData); // sending form data to php
+    }else{
+        alert("Payment Not Successfull");
+        window.location='./cart.php';
+    }
+}
+

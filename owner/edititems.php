@@ -105,16 +105,33 @@
     <div class="row">
         <div class="col">
         <div class="form-group">
-            <input type="file" class="form-control" name="image" id="image" required>
+            <input type="file" class="form-control" name="image" id="image" onchange=readURL(this) required>
+            <img style="display:none;margin: 10px;border: 1px solid black" id="preview" src="#" alt="your image" />
             <span id="imagemsg">
-                </div>
-            </div>
+        </div>
+        </div>
         </div>
         <input type="text" class="form-control" name="itemid" value="<?php echo $itemid?>" hidden>
 
     <button class="btn btngreen" type="submit"name="registerd" id="btn"><?php echo lang('edit')?></button>
     </form>
     </div>
+    <script>
+  function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#preview')
+                    .attr('src', e.target.result)
+                    .width(100)
+                    .css("display", "block")
+                    .height(100);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
   <?php include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'footer.php';   ?>
 

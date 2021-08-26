@@ -26,6 +26,8 @@ if (isset($_SESSION['logintype'])) {
      <?php
      $query123 = "SELECT * FROM finalorder WHERE c_id=$id && delivery=0;";
      $result123 = mysqli_query($con, $query123);
+     echo '<div class="card ordercard">
+     <div class="mainbox1">';
      if (mysqli_num_rows($result123) > 0)
      {
          while ($row123 = mysqli_fetch_assoc($result123)) {
@@ -34,8 +36,7 @@ if (isset($_SESSION['logintype'])) {
      $result = mysqli_query($con, $query);
      $totalfinalprice=0;
 
-     echo '<div class="card ordercard">
-     <div class="mainbox1">';
+     
    if (mysqli_num_rows($result) > 0)
    {
        while ($row1 = mysqli_fetch_assoc($result)) {
@@ -59,7 +60,7 @@ if (isset($_SESSION['logintype'])) {
               $weight=$weight/1000;
            }
          }
-         else if ($type==2) {
+         else {
            $conversion=$weight;
            $finalprice=$basicprize*$conversion;
            $totalfinalprice=$totalfinalprice+$finalprice;
@@ -70,18 +71,14 @@ if (isset($_SESSION['logintype'])) {
             $unit="pieces";
            }
          }
-         else if ($type==3) {
-          $conversion=$weight/250;
-          $finalprice=$basicprize*$conversion;
-          $totalfinalprice=$totalfinalprice+$finalprice;
-          if ($weight < 1000) {
-            $unit="ml";
+         $payment = $row123['payment_id'];
+          if($payment == null){
+            $payment_result = "unsuccessful";
+          }else if($payment == "COD") {
+            $payment_result = "PAY ON DELIVERY";
+          }else{
+            $payment_result = "successful";
           }
-          else {
-             $unit="ltr";
-             $weight=$weight/1000;
-          }
-        }
 
          echo '
          <div class="subcontain1 box">
@@ -103,6 +100,7 @@ if (isset($_SESSION['logintype'])) {
 
        echo '</div>
        <div class="card totalprice" >
+       <h5>PAYMENT : '.$payment_result.'</h5>
        <h3 style="font-weight:700;">'.lang('total_price').' ₹'.$totalfinalprice.'</h3>
 
        </div></div><br><br>';

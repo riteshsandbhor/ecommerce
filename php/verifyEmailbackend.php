@@ -9,9 +9,14 @@
         $sql = mysqli_query($con, "SELECT * FROM customer WHERE c_id = {$id}");
         $fetch = mysqli_fetch_assoc($sql);
         $token = md5($email).rand(10,9999);
-        $link = "<a href='localhost/farmfresh/php/verifiedOrNot.php?key=".$id."&token=".$token."'>Click and Verify Email</a>";
+        $link = "<a class='btn btn-primary' href='localhost/farmfresh/php/verifiedOrNot.php?key=".$id."&token=".$token."'>Click and Verify Email</a>";
         $subject = "Email Test via PHP using Localhost";
-        $body = "Hi, {$fetch['f_name']} {$fetch['l_name']},\nClick on the below link to verify your email\n".$link;
+        $name = $fetch['f_name']." ".$fetch['l_name'];
+
+        include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'template.php';
+
+
+        // $body = "Hi, {$fetch['f_name']} {$fetch['l_name']},\nClick on the below link to verify your email\n".$link;
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html; charset=UTF-8" . "\r\n";
         $headers .= 'From: test843333@gmail.com '. "\r\n";

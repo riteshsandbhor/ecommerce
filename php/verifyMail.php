@@ -57,7 +57,7 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-            <button class="btn btngreen" type="submit" name="verify" id="btn"><?php echo lang('change_verify_email')?></button>
+            <button class="btn btngreen"  type="submit" name="verify" id="btn"><span class="button__text"><?php echo lang('change_verify_email')?></span></button>
             </div>
         </div>
     </div>
