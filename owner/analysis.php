@@ -26,13 +26,13 @@ if (isset($_SESSION['Ownerid'])) {
     <div class="col-md-4">
       <div class="form-group">
         <label for="sdate">Start Date</label>
-        <input type="date" name="date1" class="form-control" id="sdate" placeholder="Since when" required>
+        <input type="date" name="date1" class="form-control category customselect classic" id="sdate" placeholder="Since when" required>
       </div>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label for="epdate">End Date</label>
-        <input type="date" name="date2" class="form-control" id="epdate" placeholder="Since when" required>
+        <input type="date" name="date2" class="form-control category customselect classic" id="epdate" placeholder="Since when" required>
       </div>
     </div>
     <div class="col-md-4" style="margin:auto">

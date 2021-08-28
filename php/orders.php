@@ -26,11 +26,12 @@ if (isset($_SESSION['logintype'])) {
      <?php
      $query123 = "SELECT * FROM finalorder WHERE c_id=$id && delivery=0;";
      $result123 = mysqli_query($con, $query123);
-     echo '<div class="card ordercard">
-     <div class="mainbox1">';
+     
      if (mysqli_num_rows($result123) > 0)
      {
          while ($row123 = mysqli_fetch_assoc($result123)) {
+          echo '<div class="card ordercard">
+          <div class="mainbox1">';
             $oredrid=$row123['o_id'];
      $query = "SELECT * FROM cart WHERE c_id=$id && o_id=$oredrid;";
      $result = mysqli_query($con, $query);

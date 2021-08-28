@@ -73,32 +73,36 @@ if (isset($_POST['registerd'])) {
   <div class="row">
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="text" class="form-control" name="fname" id="firstname" placeholder=<?php echo lang('fname') ;?> required>
+             <input type="text" class="form-control category customselect classic" name="fname" id="firstname" placeholder=<?php echo lang('fname') ;?> required>
              <span id="fnamemsg"></span>
          </div>
       </div>
+      <br>
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="text" class="form-control" name="lname" id="lastname" placeholder=<?php echo lang('lname') ;?> required>
+             <input type="text" class="form-control category customselect classic" name="lname" id="lastname" placeholder=<?php echo lang('lname') ;?> required>
              <span id="lnamemsg"></span>
          </div>
       </div>
   </div>
+  <br>
    <div class="row">
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="email" class="form-control" name="email" id="email" placeholder=<?php echo lang('email') ;?> required>
+             <input type="email" class="form-control category customselect classic" name="email" id="email" placeholder=<?php echo lang('email') ;?> required>
               <span id="emmsg"></span>
          </div>
       </div>
+      <br>
        <div class="col-sm-6">
          <div class="form-group">
 
-    <input type="number" class="form-control" name="logmob" id="lognum" placeholder=<?php echo lang('mobile'); ?>>
+    <input type="number" class="form-control category customselect classic" name="logmob" id="lognum" placeholder=<?php echo lang('mobile'); ?>>
     <span id="mobmsg">
   </div>
    </div>
   </div>
+  <br>
   <div class="form-group">
     <textarea class="form-control" name="address" placeholder="Address" id="add" rows="2" columns="10" required></textarea>
     <span id="addmsg"></span>

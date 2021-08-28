@@ -64,13 +64,14 @@
   <div class="row">
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="text" class="form-control" name="name" id="name" placeholder=<?php echo lang('name') ;?> required>
+             <input type="text" class="form-control category customselect classic" name="name" id="name" placeholder=<?php echo lang('name') ;?> required>
              <span id="namemsg"></span>
          </div>
       </div>
+      <br><br>
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="text" class="form-control" name="Hname" id="Hname" placeholder=<?php echo lang('hname') ;?> required>
+             <input type="text" class="form-control category customselect classic" name="Hname" id="Hname" placeholder=<?php echo lang('hname') ;?> required>
              <span id="hnamemsg"></span>
          </div>
       </div>
@@ -78,7 +79,7 @@
   <div class="row">
       <div class="col-sm-6">
          <div class="form-group">
-            <input type="text" class="form-control" name="Mname" id="Mname" placeholder=<?php echo lang('mname') ;?> required>
+            <input style="margin-bottom: 15px;" type="text" class="form-control category customselect classic" name="Mname" id="Mname" placeholder=<?php echo lang('mname') ;?> required>
             <span id="mnamemsg"></span>
          </div>
       </div>
@@ -108,13 +109,13 @@
   <div class="row">
     <div class="col">
       <div class="form-group">
-        <input type="file" class="form-control" name="image" id="image" onchange=readURL(this) required>
+        <input type="file" class="form-control category customselect classic" name="image" id="image" onchange=readURL(this) required>
         <img style="display:none;margin: 10px;border: 1px solid black" id="preview" src="#" alt="your image" />
         <span id="imagemsg">
       </div>
     </div>
   </div>
-
+<br><br>
   <button class="btn btngreen" type="submit"name="registerd" id="btn"><?php echo lang('add')?></button>
   </form>
 </div>

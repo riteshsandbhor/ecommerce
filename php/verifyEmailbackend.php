@@ -9,7 +9,7 @@
         $sql = mysqli_query($con, "SELECT * FROM customer WHERE c_id = {$id}");
         $fetch = mysqli_fetch_assoc($sql);
         $token = md5($email).rand(10,9999);
-        $link = "<a class='btn btn-primary' href='localhost/farmfresh/php/verifiedOrNot.php?key=".$id."&token=".$token."'>Click and Verify Email</a>";
+        $link = "<a class='btn btn-primary' href='localhost/project1/ecommerce/php/verifiedOrNot.php?key=".$id."&token=".$token."'>Click and Verify Email</a>";
         $subject = "Email Test via PHP using Localhost";
         $name = $fetch['f_name']." ".$fetch['l_name'];
 

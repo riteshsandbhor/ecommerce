@@ -56,12 +56,12 @@ if (isset($_POST['loginowner'])) {
   <br>
      <div class="form-group">
       <label for logpassword><b><?php echo lang('email')?></b> </label>
-         <input type="email" class="form-control" name="o_number" id="email" placeholder=<?php echo lang('email') ;?> required>
+         <input type="email" class="form-control category customselect classic" name="o_number" id="email" placeholder=<?php echo lang('email') ;?> required>
           <span id="emmsg"></span>
      </div>
   <div class="form-group">
     <label for logpassword><b><?php echo lang('password')?></b> </label>
-    <input type="password"name="o_password" class="form-control" name="logpass" id="logpassword" placeholder=<?php echo lang('password')?>>
+    <input type="password"name="o_password" class="form-control category customselect classic" name="logpass" id="logpassword" placeholder=<?php echo lang('password')?>>
      <span id="pomsg">
   </div>
   <br><br>

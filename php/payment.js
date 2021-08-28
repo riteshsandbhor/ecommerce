@@ -20,7 +20,29 @@ var options = {
 };
 var rzp1 = new Razorpay(options);
 btn.onclick = function(){
-    rzp1.open();
+    //Ajax
+    let xhr = new XMLHttpRequest(); //creating XML object
+    xhr.open("POST", "./outofstock.php", true);
+    xhr.onload = ()=>{
+        if(xhr.readyState == XMLHttpRequest.DONE){
+            if(xhr.status == 200){
+                let data = xhr.response;
+
+                if(data == "outofstock"){
+                    alert('Some items are out of stock.');
+                    window.location='./cart.php';
+                }else if(data == "success"){
+                    rzp1.open();
+                }else{
+                    alert("Error -> "+data);
+                    window.location='./cart.php';
+                }
+            }
+        }
+    }
+    // Sending data from Ajax to php
+    let formData = new FormData(form); //creating new formData
+    xhr.send(formData); // sending form data to php
 }
 
 btnCod.onclick = function(){
@@ -31,7 +53,6 @@ btnCod.onclick = function(){
     if(xhr.readyState == XMLHttpRequest.DONE){
         if(xhr.status == 200){
             let data = xhr.response;
-            console.log(data);
             if(data == "outofstock"){
                 alert('Some items are out of stock.');
                 window.location='./cart.php';
@@ -51,7 +72,7 @@ btnCod.onclick = function(){
 }
 
 function dbhandler(res){
-    if(res != null){
+    if(res.razorpay_payment_id != null){
         //Ajax
         let xhr = new XMLHttpRequest(); //creating XML object
         xhr.open("POST", "./placingOrderBackend.php?payment_method=online&payment_id="+res.razorpay_payment_id, true);
@@ -59,7 +80,6 @@ function dbhandler(res){
         if(xhr.readyState == XMLHttpRequest.DONE){
             if(xhr.status == 200){
                 let data = xhr.response;
-                console.log(data);
                 if(data == "outofstock"){
                     alert('Some items are out of stock.');
                     window.location='./cart.php';

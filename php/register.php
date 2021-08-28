@@ -35,47 +35,55 @@ if (isset($_SESSION['Custid'])) {
   <div class="row">
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="text" class="form-control" name="fname" id="firstname" placeholder="<?php echo lang('fname') ;?>" required>
+             <input type="text" class="form-control category customselect classic" name="fname" id="firstname" placeholder="<?php echo lang('fname') ;?>" required>
              <span id="fnamemsg"></span>
          </div>
       </div>
+      <br>
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="text" class="form-control" name="lname" id="lastname" placeholder="<?php echo lang('lname') ;?>" required>
+             <input type="text" class="form-control category customselect classic" name="lname" id="lastname" placeholder="<?php echo lang('lname') ;?>" required>
              <span id="lnamemsg"></span>
          </div>
       </div>
   </div>
+  <br>
   <div class="row">
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="email" class="form-control" name="email" id="email" placeholder="<?php echo lang('email') ;?>" required>
+             <input type="email" class="form-control category customselect classic" name="email" id="email" placeholder="<?php echo lang('email') ;?>" required>
               <span id="emmsg"></span>
          </div>
       </div>
+      <br>
       <div class="col-sm-6">
          <div class="form-group">
-             <input type="text" class="form-control" name="mobile" id="mobile" placeholder="<?php echo lang('mobile') ;?>" required>
+             <input type="text" class="form-control category customselect classic" name="mobile" id="mobile" placeholder="<?php echo lang('mobile') ;?>" required>
              <span id="mobilemsg"></span>
          </div>
       </div>
   </div>
+  <br>
   <div class="form-group">
-    <textarea class="form-control" name="address" placeholder="<?php echo lang('delivery') ;?>"  id="add" rows="2" columns="10" required></textarea>
+    <textarea class="form-control " name="address" placeholder="<?php echo lang('delivery') ;?>"  id="add" rows="2" columns="10" required></textarea>
     <span id="addmsg"></span>
   </div>
+  <br>
   <div class="form-group">
-    <input type="number" class="form-control" name="pincode" id="pin" placeholder="<?php echo lang('pin')?>"  required>
+    <input type="number" class="form-control category customselect classic" name="pincode" id="pin" placeholder="<?php echo lang('pin')?>"  required>
     <span id="pinMsg"></span>
   </div>
+  <br><br>
   <div class="form-group">
-    <input type="password" class="form-control" name="password" id="pass" placeholder="<?php echo lang('enter_password')?>"  required>
+    <input type="password" class="form-control category customselect classic" name="password" id="pass" placeholder="<?php echo lang('enter_password')?>"  required>
     <span id="passMsg"></span>
   </div>
+  <br><br>
   <div class="form-group">
-    <input type="password" class="form-control" name="repassword" id="pass1" placeholder="<?php echo lang('re_enter_pass')?>" required>
+    <input type="password" class="form-control category customselect classic" name="repassword" id="pass1" placeholder="<?php echo lang('re_enter_pass')?>" required>
     <span id="pass1Msg"></span>
   </div>
+  <br><br>
   <input type="button" style="width:210px;" class="btn btn3" onclick="getLocation()"value="<?php echo lang('get_location')?>" />
   <br>
   <small>Allow Location Access On Your Device</small><br>
@@ -84,6 +92,7 @@ if (isset($_SESSION['Custid'])) {
   <input type="hidden" id="lat" name="lat" />
   <input type="hidden" id="long" name="long"  />
   <span id="getloc" class="text-danger" style="font-weight: 700"></span>
+  <br>
 
   <button class="btn btngreen" type="submit"name="register" id="btn"><?php echo lang('REGISTER')?></button>
   </form>

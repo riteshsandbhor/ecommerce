@@ -41,13 +41,13 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPA
                  <div class="row">
                    <div class="col-md-8 offset-md-2 text-left">
                      <label for="info">Name</label>
-                     <input type="text" name="info" class="form-control" id="info" placeholder="Enter Name" required>
+                     <input type="text" name="info" class="form-control category customselect classic" id="info" placeholder="Enter Name" required>
                      <input type="hidden" name="studid" value="<?php echo $id;?>" class="form-control" >
                      <span id="info_err" class="text-danger" style="font-weight: bold"></span>
                    </div><br><br><br/><br/>
                    <div class="col-md-8 offset-md-2 text-left">
                      <label for="info">Feedback</label>
-                     <input type="text" name="info" class="form-control" id="info" placeholder="Description" required>
+                     <input type="text" name="info" class="form-control category customselect classic" id="info" placeholder="Description" required>
                      <input type="hidden" name="studid" value="<?php echo $id;?>" class="form-control" >
                      <span id="info_err" class="text-danger" style="font-weight: bold"></span>
                    </div>
@@ -67,7 +67,7 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPA
                            <div class="custom-file">
                                <!-- <input type="file" class="custom-file-input" id="filePhoto" name="image" required> -->
                                  <input type="file" class="custom-file-input" id="filePhoto" name="image" >
-                                 <label class="custom-file-label" for="filePhoto">Choose file</label>
+                                 <label class="custom-file-label " for="filePhoto">Choose file</label>
                              </div>
                              <span id="fp" class="text-danger" style="font-weight: bold"></span>
                    </div>

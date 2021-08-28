@@ -65,18 +65,20 @@ if (isset($_SESSION['Ownerid'])) {
     <div class="col">
       <div class="form-group">
       <label for quantity><b>Quantity (Grams, ml, piece)</b> </label>
-        <input type="number" name="quantity" class="form-control"id="quantity" placeholder="Quantity in (Grams, ml, piece)">
+        <input type="number" name="quantity" class="form-control category customselect classic"id="quantity" placeholder="Quantity in (Grams, ml, piece)">
          <span id="quamsg"></span>
       </div>
     </div>
+    <br>
     <div class="col">
       <div class="form-group">
       <label for price><b>Price (for 250g, 250ml, 1 Piece)</b> </label>
-        <input type="number" name="price" class="form-control"id="price" placeholder="Price (for 250g, 250ml, 1 Piece)">
+        <input type="number" name="price" class="form-control category customselect classic"id="price" placeholder="Price (for 250g, 250ml, 1 Piece)">
       <span id="primsg"></span>
       </div>
     </div>
   </div>
+  <br>
   <div class="text-center">
       <button class="btn btngreen" name="itementry" id="btn">Enter</button>
   </div>

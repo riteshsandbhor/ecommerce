@@ -51,12 +51,12 @@ if (isset($_POST['logincustomer'])) {
   <br>
   <div class="form-group" style="text-align: left;">
     <label for lognum><b><?php echo lang('mobile')?></b> </label>
-    <input type="number" name="c_number" class="form-control" id="lognum" placeholder=<?php echo lang('mobile'); ?>>
+    <input type="number" name="c_number" class="form-control category customselect classic" id="lognum" placeholder=<?php echo lang('mobile'); ?>>
     <span id="momsg">
   </div>
   <div class="form-group" style="text-align: left;">
     <label for logpassword><b><?php echo lang('password')?></b> </label>
-    <input type="password"name="c_password" class="form-control" name="logpass" id="logpassword" placeholder=<?php echo lang('password')?>>
+    <input type="password"name="c_password" class="form-control category customselect classic" name="logpass" id="logpassword" placeholder=<?php echo lang('password')?>>
      <span id="pomsg">
   </div>
   <a style="color: #009975;" href="./forgetpassword.php"><?php echo lang('forgot_pass')?></a>

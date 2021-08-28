@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2021 at 12:05 PM
+-- Generation Time: Aug 24, 2021 at 01:00 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -74,8 +74,8 @@ INSERT INTO `cart` (`cart_id`, `c_id`, `item_id`, `weight`, `price`, `o_id`) VAL
 (42, 2, 1, 5, 75, 20),
 (43, 2, 9, 1000, 80, 21),
 (44, 2, 4, 250, 20, 21),
-(65, 13, 2, 250, 10, 30),
-(66, 13, 2, 250, 10, 31);
+(53, 13, 84, 2000, 96, 23),
+(54, 13, 2, 250, 10, 24);
 
 -- --------------------------------------------------------
 
@@ -160,7 +160,6 @@ INSERT INTO `employee` (`d_id`, `f_name`, `l_name`, `phone`, `email`, `address`,
 CREATE TABLE `finalorder` (
   `o_id` double NOT NULL,
   `c_id` double NOT NULL,
-  `payment_id` varchar(50) DEFAULT NULL,
   `deliveryboy` int(5) NOT NULL,
   `delivery` int(2) NOT NULL COMMENT 'if yes 1 or 0',
   `timeorder` int(11) NOT NULL,
@@ -172,28 +171,28 @@ CREATE TABLE `finalorder` (
 -- Dumping data for table `finalorder`
 --
 
-INSERT INTO `finalorder` (`o_id`, `c_id`, `payment_id`, `deliveryboy`, `delivery`, `timeorder`, `timedispatch`, `timedelivery`) VALUES
-(1, 3, NULL, 1, 1, 1591216047, 0, 0),
-(2, 3, NULL, 1, 1, 1591217408, 0, 1591284979),
-(3, 3, NULL, 0, 1, 1591273165, 0, 1591284979),
-(4, 3, NULL, 1, 1, 1591273813, 0, 0),
-(5, 3, NULL, 4, 1, 1591274050, 0, 1591284979),
-(6, 3, NULL, 4, 1, 1591274146, 1591385504, 1591284979),
-(7, 3, NULL, 0, 1, 1591274405, 0, 1591284979),
-(10, 7, NULL, 4, 1, 1591292213, 0, 1591451283),
-(11, 7, NULL, 4, 1, 1591292527, 0, 1591451159),
-(12, 7, NULL, 4, 1, 1591292616, 1591385519, 1591451174),
-(13, 3, NULL, 4, 1, 1591382416, 0, 1607939523),
-(14, 3, NULL, 4, 1, 1591384895, 1591385467, 0),
-(15, 3, NULL, 4, 1, 1591389681, 1591419068, 1591419100),
-(16, 3, NULL, 4, 1, 1591419649, 1591419667, 1591419867),
-(17, 3, NULL, 4, 1, 1591466268, 1591466350, 1591466392),
-(18, 2, NULL, 0, 0, 1607492832, 0, 0),
-(19, 2, NULL, 0, 0, 1607514699, 0, 0),
-(20, 2, NULL, 4, 1, 1607931861, 1607939303, 1607948198),
-(21, 2, NULL, 4, 1, 1607948849, 1607948914, 1607949057),
-(30, 13, 'pay_HpmX3FbbKVtvDw', 4, 1, 1629971136, 1629971181, 1629971224),
-(31, 13, 'COD', 0, 0, 1629971356, 0, 0);
+INSERT INTO `finalorder` (`o_id`, `c_id`, `deliveryboy`, `delivery`, `timeorder`, `timedispatch`, `timedelivery`) VALUES
+(1, 3, 1, 1, 1591216047, 0, 0),
+(2, 3, 1, 1, 1591217408, 0, 1591284979),
+(3, 3, 0, 1, 1591273165, 0, 1591284979),
+(4, 3, 1, 1, 1591273813, 0, 0),
+(5, 3, 4, 1, 1591274050, 0, 1591284979),
+(6, 3, 4, 1, 1591274146, 1591385504, 1591284979),
+(7, 3, 0, 1, 1591274405, 0, 1591284979),
+(10, 7, 4, 1, 1591292213, 0, 1591451283),
+(11, 7, 4, 1, 1591292527, 0, 1591451159),
+(12, 7, 4, 1, 1591292616, 1591385519, 1591451174),
+(13, 3, 4, 1, 1591382416, 0, 1607939523),
+(14, 3, 4, 1, 1591384895, 1591385467, 0),
+(15, 3, 4, 1, 1591389681, 1591419068, 1591419100),
+(16, 3, 4, 1, 1591419649, 1591419667, 1591419867),
+(17, 3, 4, 1, 1591466268, 1591466350, 1591466392),
+(18, 2, 0, 0, 1607492832, 0, 0),
+(19, 2, 0, 0, 1607514699, 0, 0),
+(20, 2, 4, 1, 1607931861, 1607939303, 1607948198),
+(21, 2, 4, 1, 1607948849, 1607948914, 1607949057),
+(23, 13, 4, 1, 1629702994, 1629720304, 1629720482),
+(24, 13, 0, 0, 1629788791, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -219,9 +218,9 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `category_type`, `type`, `quantity`, `price`, `img`) VALUES
 (1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 1, 1, 26, 15, 'AmarnathLeaves.jpg'),
-(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 2, 1, 1500, 10, 'BabyCorn.png'),
+(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 2, 1, 4750, 10, 'BabyCorn.png'),
 (3, 'Beetroot', 'चुकंदर', 'चुकंदर', 1, 1, 0, 10, 'Beetroot.jpg'),
-(4, 'Bitter Gourd', 'कार्ल', 'करेला', 2, 1, 250, 10, 'BitterGourd.jpeg'),
+(4, 'Bitter Gourd', 'कार्ल', 'करेला', 2, 1, 1000, 10, 'BitterGourd.jpeg'),
 (5, 'Bottle Gourd', 'दुधी भोपळा', 'लौकी', 1, 1, 0, 0, 'BottleGourd.jpg'),
 (6, 'Cabbage', 'कोबी', 'पत्ता गोभी', 2, 1, 15500, 12, 'Cabbage.jpg'),
 (7, 'Capsicum', 'शिमला मिर्ची', 'शिमला मिर्च', 0, 1, 0, 0, 'Capsicum.jpg'),
@@ -380,7 +379,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -404,13 +403,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `finalorder`
 --
 ALTER TABLE `finalorder`
-  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `owner`
