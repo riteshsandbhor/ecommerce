@@ -1,6 +1,9 @@
 <?php
-  include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
+  
   session_start();
+  include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
+  include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'langs'.DIRECTORY_SEPARATOR.'set_lang.php';
+
   error_reporting(E_ALL ^ E_NOTICE);
 
   if(isset($_GET['lang'])){
@@ -13,7 +16,6 @@
   if (!empty($getLang)) {
     $_SESSION['language'] = $getLang;
   }
-  include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'langs'.DIRECTORY_SEPARATOR.'set_lang.php';
 
   $did = $_REQUEST['s_id'];
   $cid = (int) $_REQUEST['c_id'];

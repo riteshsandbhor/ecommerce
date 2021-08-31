@@ -129,7 +129,7 @@ if (isset($_SESSION['Custid'])) {
         {
           $row=mysqli_fetch_array($query);
         ?>
-      <option value="<?php echo $row["id"] ?>" ><?php echo $row["name"] ?></option>
+      <option value="<?php echo $row["id"] ?>" ><?php echo lang($row["name"]) ?></option>
       <?php
         }
       ?>
