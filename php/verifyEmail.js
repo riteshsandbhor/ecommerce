@@ -33,3 +33,5 @@ btn.onclick = ()=>{
     let formData = new FormData(form); //creating new formData
     xhr.send(formData); // sending form data to php
 }
+
+btn.disabled=false;

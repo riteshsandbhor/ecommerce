@@ -5,8 +5,8 @@ if (isset($_SESSION['Custid'])) {
   header("Location: ./home.php");
 }
 if (isset($_POST['logincustomer'])) {
-  $mail = mysqli_real_escape_string($con,$_POST['c_number']);
-  $query = "SELECT * FROM customer WHERE c_phone='$mail'";
+  $mail = mysqli_real_escape_string($con,$_POST['c_email']);
+  $query = "SELECT * FROM customer WHERE c_email='$mail'";
   $result = mysqli_query($con, $query);
   $row = mysqli_fetch_assoc($result);
   $id = $row['c_id'];
@@ -19,9 +19,8 @@ if (isset($_POST['logincustomer'])) {
     header("Location: ./home.php");
   } else {
     // echo "Session not set";
-    header("Location: ./home.php");
+    header("Location: ./login.php");
   }
-
 }
  ?>
 <html lang="en">
@@ -50,16 +49,16 @@ if (isset($_POST['logincustomer'])) {
   <form method="post">
   <br>
   <div class="form-group" style="text-align: left;">
-    <label for lognum><b><?php echo lang('mobile')?></b> </label>
-    <input type="number" name="c_number" class="form-control category customselect classic" id="lognum" placeholder=<?php echo lang('mobile'); ?>>
-    <span id="momsg">
+    <label for lognum><b><?php echo lang('email')?></b> </label>
+    <input type="email" name="c_email" class="form-control category customselect classic" id="logemail" placeholder=<?php echo lang('email'); ?>>
+    <span id="logemailmsg">
   </div>
   <div class="form-group" style="text-align: left;">
     <label for logpassword><b><?php echo lang('password')?></b> </label>
     <input type="password"name="c_password" class="form-control category customselect classic" name="logpass" id="logpassword" placeholder=<?php echo lang('password')?>>
      <span id="pomsg">
   </div>
-  <a style="color: #009975;" href="./forgetpassword.php"><?php echo lang('forgot_pass')?></a>
+  <a style="color: #009975;" href="./forgotpassword.php"><?php echo lang('forgot_pass')?></a>
   <br><br>
   <button class="btn btngreen" name="logincustomer" id="btn"><?php echo lang('login_btn')?></button>
   </form>
@@ -73,18 +72,18 @@ if (isset($_POST['logincustomer'])) {
 
      $("#btn").prop('disabled', true);
 
-    $("#lognum").keyup(function(){
+    $("#logemail").keyup(function(){
 
-      if(valMob()){
+      if(valEmail()){
 
-        $("#lognum").css("border","2px solid #009975");
+        $("#logemail").css("border","2px solid #009975");
 
-        $("#momsg").html("<p class='text-success'>Mobile Number validated</p>");
+        $("#logemailmsg").html("<p class='text-success'>Email validated</p>");
       }else{
 
-        $("#lognum").css("border","2px solid red");
+        $("#logemail").css("border","2px solid red");
 
-        $("#momsg").html("<p class='text-danger'>Should be 10 digits</p>");
+        $("#logemailmsg").html("<p class='text-danger'>Email is not validated</p>");
       }
       buttonState();
     });
@@ -106,7 +105,7 @@ if (isset($_POST['logincustomer'])) {
   });
 
   function buttonState(){
-    if(validatePass() && valMob()){
+    if(validatePass() && valEmail()){
 
        $("#btn").prop('disabled', false);
     }else{
@@ -116,12 +115,13 @@ if (isset($_POST['logincustomer'])) {
   }
 
 
-  function valMob(){
-    var number_check=new RegExp('[0-9]');
-    var mob1=$("#lognum").val();
-    if(mob1.length==10  && mob1.match(number_check)){
+  function valEmail(){
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    var em = $("#logemail").val();
+    if (em.match(regex)) {
       return true;
-    }  else{
+    } else {
       return false;
     }
   }

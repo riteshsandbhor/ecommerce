@@ -71,7 +71,7 @@
       }
     }
     require_once '../vendor/autoload.php';
-    $html = "<h3 style='text-align:center;font-size:27px'>Shetkari to Grahak</h3>\n
+    $html = "<h3 style='text-align:center;font-size:27px'>Mahalaxmi Vegetables</h3>\n
             <h3 style='text-align:center'>Order No.$orderid</h3>\n
             <hr>
             <h4>Name: $name</h4>\n

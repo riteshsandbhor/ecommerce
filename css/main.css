@@ -67,13 +67,11 @@ body {
     display: none;
 }
 
-
-
 .logostyle {
     padding-left: 1rem;
     transform: scale(1.5);
-    height: 57px;
-    width: 100px;
+    height: 50px;
+    width: auto;
     object-fit: contain;
 }
 
@@ -96,6 +94,10 @@ body {
         top: 100%;
         transform: rotateX(0deg);
     }
+}
+
+.navbar{
+    padding: 10px;
 }
 
 .navigation a {
