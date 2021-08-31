@@ -71,7 +71,9 @@
       }
     }
     require_once '../vendor/autoload.php';
-    $html = "<h2 style='text-align:center'>Order No.$orderid</h2>\n
+    $html = "<h3 style='text-align:center;font-size:27px'>Shetkari to Grahak</h3>\n
+            <h3 style='text-align:center'>Order No.$orderid</h3>\n
+            <hr>
             <h4>Name: $name</h4>\n
             <h4>Mobile No.: $phone</h4>\n
             <h4>Email ID: $email</h4>\n
@@ -104,10 +106,24 @@
                     </tr>
                 </tbody>
             </table>
-            <hr>";
+            <hr><br><br>
+            <p style='font-size:12px;text-align:center;font-style:italic;font-weight:300;'><strong>Note :-</strong>  if you find any
+            DISCRIMANCY in the QTY or MRP
+            rates do let us know we shall reimburse
+            for the same.<br><br>
+            Sorry for Inconvenience items
+            which are not in stock has been
+            removed from list to expedite
+            scheduled delivery</p>";
 
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->SetDisplayMode('fullpage');
+
+    // $mpdf->SetWatermarkText('DRAFT');
+    // $mpdf->showWatermarkText = true;
+
+    $mpdf->SetWatermarkImage('../images/Logo.png');
+    $mpdf->showWatermarkImage = true;
     $mpdf->WriteHTML($html);
     $mpdf->Output(); 
   }  

@@ -68,7 +68,7 @@
 </p>
 </div> -->
 <div class="footer-right"><!--Right-->
-    <p class="footerbold">Office No.107, Anand Bazaar, Opp. Ashar Residency, Pokharan Rd Number 2, Vasant Vihar, Thane West, Thane, Maharashtra 400610</p>
+    <p class="footerbold">D5-131, Ratnadeep CHS,OLD MHADA, Vasant Vihar, Pokharan Road No. 2, Thane: 400610, Maharashtra, India</p>
 
   </div>
 

@@ -57,15 +57,45 @@ if (isset($_SESSION['Custid'])) {
   <title>Home</title>
   <link rel="icon" href="../images/circle.png">
   <link rel="manifest" href="webmanifest.json">
+  <style>
+    .d-block{
+      height: 450px;
+      width: auto;
+    }
+    .carousel-item-next, .carousel-item-prev, .carousel-item.active {
+      display: flex !important; 
+      justify-content: center !important; 
+    }
+    .carousel-control-next-icon, .carousel-control-prev-icon{
+      filter: invert(100%);
+    }
+  </style>
 </head>
 <body>
 
   <?php
     include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'header.php';
    ?>
-   <?php
 
-      ?>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" >
+      <img class="d-block " src="../images/banner1.jpeg" alt="First slide">
+    </div>
+    <div class="carousel-item" >
+      <img class="d-block " src="../images/banner2.jpeg" alt="Second slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
       <div class="pag">
      <p class="pagehead"> <?php echo lang('products')?></p>
      </div>

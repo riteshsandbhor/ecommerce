@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2021 at 01:00 PM
+-- Generation Time: Aug 31, 2021 at 11:41 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -74,8 +74,16 @@ INSERT INTO `cart` (`cart_id`, `c_id`, `item_id`, `weight`, `price`, `o_id`) VAL
 (42, 2, 1, 5, 75, 20),
 (43, 2, 9, 1000, 80, 21),
 (44, 2, 4, 250, 20, 21),
-(53, 13, 84, 2000, 96, 23),
-(54, 13, 2, 250, 10, 24);
+(65, 13, 2, 250, 10, 30),
+(66, 13, 2, 250, 10, 31),
+(68, 13, 2, 250, 10, 32),
+(69, 13, 4, 250, 10, 32),
+(70, 13, 12, 1, 20, 32),
+(71, 13, 2, 250, 10, 33),
+(75, 17, 1, 250, 15, 35),
+(76, 17, 2, 250, 10, 35),
+(77, 17, 88, 2, 8, 35),
+(78, 17, 1, 500, 30, 0);
 
 -- --------------------------------------------------------
 
@@ -95,7 +103,30 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `name`) VALUES
 (1, 'Vegetable'),
 (2, 'Fruits'),
-(3, 'Milk');
+(3, 'oil');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `index` int(2) NOT NULL,
+  `id` int(2) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `number` varchar(20) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `message` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`index`, `id`, `name`, `email`, `number`, `subject`, `message`) VALUES
+(4, 17, 'prajwal shelke', 'prajwalshelke03@gmail.com', '8433551037', 'asdasd', 'asdada');
 
 -- --------------------------------------------------------
 
@@ -126,7 +157,7 @@ INSERT INTO `customer` (`c_id`, `flag`, `f_name`, `l_name`, `c_address`, `c_pin`
 (3, 0, 'Ritesh', 'Sandbhor', 'Kasturi Lawns Chikanghar Highway Near Sandeep Hotel Behind Pulse Hospital Kalyan West', 421301, 8888741000, 'ritesh@outlook.com', '$2y$10$Ecj1ny/POTrgC5EbCE8I6OInc1Y2rF0tvYvTnbs56qSO6Ld6WTozm', 0, 0),
 (6, 0, 'Ritesh', 'Sandbhor', 'Kasturi lawns', 421301, 9029878, 'deshpande.y@somaiya.edu', '$2y$10$ZQDsUtsne9RxPf0TAydahuFP8E/wO5qrbyAwUt2S1rkBu2Wf1l7Fy', 19.2510093, 73.14233779999999),
 (7, 0, 'Harsh', 'Bhor', 'Thane', 400610, 9221376428, 'hbhor@somaiya.edu', '$2y$10$9b5OEADtVaF1vO2FNqhybuhHY7FYJ3cCs5LziR.EeCWPPh03tlPS.', 19.259511399999997, 73.1454596),
-(13, 1, 'prajwal', 'shelke', 'B/08, bldg no.3,\r\nVenketeshwar nagar,cabin road', 401105, 8433551037, 'prajwalshelke03@gmail.com', '$2y$10$fEzbMltEuAtSS4KhpAtCnesH3NOFgCX4l9p.kMj8e5maY3UoHYhFO', 19.2217088, 72.8530944);
+(17, 1, 'prajwal', 'shelke', 'B/08, bldg no.3,\r\nVenketeshwar nagar,cabin road', 401105, 843355103, 'prajwalshelke03@gmail.com', '$2y$10$X4bWt6KLvP3eSW4InQhl3OvP5diOjDlLwczokxFB48n4QyPDuWRnm', 19.2249856, 72.8694784);
 
 -- --------------------------------------------------------
 
@@ -160,6 +191,7 @@ INSERT INTO `employee` (`d_id`, `f_name`, `l_name`, `phone`, `email`, `address`,
 CREATE TABLE `finalorder` (
   `o_id` double NOT NULL,
   `c_id` double NOT NULL,
+  `payment_id` varchar(50) DEFAULT NULL,
   `deliveryboy` int(5) NOT NULL,
   `delivery` int(2) NOT NULL COMMENT 'if yes 1 or 0',
   `timeorder` int(11) NOT NULL,
@@ -171,28 +203,30 @@ CREATE TABLE `finalorder` (
 -- Dumping data for table `finalorder`
 --
 
-INSERT INTO `finalorder` (`o_id`, `c_id`, `deliveryboy`, `delivery`, `timeorder`, `timedispatch`, `timedelivery`) VALUES
-(1, 3, 1, 1, 1591216047, 0, 0),
-(2, 3, 1, 1, 1591217408, 0, 1591284979),
-(3, 3, 0, 1, 1591273165, 0, 1591284979),
-(4, 3, 1, 1, 1591273813, 0, 0),
-(5, 3, 4, 1, 1591274050, 0, 1591284979),
-(6, 3, 4, 1, 1591274146, 1591385504, 1591284979),
-(7, 3, 0, 1, 1591274405, 0, 1591284979),
-(10, 7, 4, 1, 1591292213, 0, 1591451283),
-(11, 7, 4, 1, 1591292527, 0, 1591451159),
-(12, 7, 4, 1, 1591292616, 1591385519, 1591451174),
-(13, 3, 4, 1, 1591382416, 0, 1607939523),
-(14, 3, 4, 1, 1591384895, 1591385467, 0),
-(15, 3, 4, 1, 1591389681, 1591419068, 1591419100),
-(16, 3, 4, 1, 1591419649, 1591419667, 1591419867),
-(17, 3, 4, 1, 1591466268, 1591466350, 1591466392),
-(18, 2, 0, 0, 1607492832, 0, 0),
-(19, 2, 0, 0, 1607514699, 0, 0),
-(20, 2, 4, 1, 1607931861, 1607939303, 1607948198),
-(21, 2, 4, 1, 1607948849, 1607948914, 1607949057),
-(23, 13, 4, 1, 1629702994, 1629720304, 1629720482),
-(24, 13, 0, 0, 1629788791, 0, 0);
+INSERT INTO `finalorder` (`o_id`, `c_id`, `payment_id`, `deliveryboy`, `delivery`, `timeorder`, `timedispatch`, `timedelivery`) VALUES
+(1, 3, NULL, 1, 1, 1591216047, 0, 0),
+(2, 3, NULL, 1, 1, 1591217408, 0, 1591284979),
+(3, 3, NULL, 0, 1, 1591273165, 0, 1591284979),
+(4, 3, NULL, 1, 1, 1591273813, 0, 0),
+(5, 3, NULL, 4, 1, 1591274050, 0, 1591284979),
+(6, 3, NULL, 4, 1, 1591274146, 1591385504, 1591284979),
+(7, 3, NULL, 0, 1, 1591274405, 0, 1591284979),
+(10, 7, NULL, 4, 1, 1591292213, 0, 1591451283),
+(11, 7, NULL, 4, 1, 1591292527, 0, 1591451159),
+(12, 7, NULL, 4, 1, 1591292616, 1591385519, 1591451174),
+(13, 3, NULL, 4, 1, 1591382416, 0, 1607939523),
+(14, 3, NULL, 4, 1, 1591384895, 1591385467, 0),
+(15, 3, NULL, 4, 1, 1591389681, 1591419068, 1591419100),
+(16, 3, NULL, 4, 1, 1591419649, 1591419667, 1591419867),
+(17, 3, NULL, 4, 1, 1591466268, 1591466350, 1591466392),
+(18, 2, NULL, 0, 0, 1607492832, 0, 0),
+(19, 2, NULL, 0, 0, 1607514699, 0, 0),
+(20, 2, NULL, 4, 1, 1607931861, 1607939303, 1607948198),
+(21, 2, NULL, 4, 1, 1607948849, 1607948914, 1607949057),
+(30, 13, 'pay_HpmX3FbbKVtvDw', 4, 1, 1629971136, 1629971181, 1629971224),
+(32, 13, 'pay_HqVcPRRf4qtIDD', 0, 0, 1630129913, 0, 0),
+(33, 13, 'COD', 0, 0, 1630132573, 0, 0),
+(35, 17, 'pay_HqwKgj1L0oHLC9', 4, 1, 1630223990, 1630224033, 1630224072);
 
 -- --------------------------------------------------------
 
@@ -217,17 +251,17 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `category_type`, `type`, `quantity`, `price`, `img`) VALUES
-(1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 1, 1, 26, 15, 'AmarnathLeaves.jpg'),
-(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 2, 1, 4750, 10, 'BabyCorn.png'),
+(1, 'Amarnath Leaves', 'चवळी', 'अमृत पान', 1, 1, 500, 15, 'AmarnathLeaves.jpg'),
+(2, 'Baby Corn', 'बेबी कॉर्न', 'मीठी-मकई', 1, 1, 500, 10, 'BabyCorn.png'),
 (3, 'Beetroot', 'चुकंदर', 'चुकंदर', 1, 1, 0, 10, 'Beetroot.jpg'),
-(4, 'Bitter Gourd', 'कार्ल', 'करेला', 2, 1, 1000, 10, 'BitterGourd.jpeg'),
+(4, 'Bitter Gourd', 'कार्ल', 'करेला', 1, 1, 0, 10, 'BitterGourd.jpeg'),
 (5, 'Bottle Gourd', 'दुधी भोपळा', 'लौकी', 1, 1, 0, 0, 'BottleGourd.jpg'),
-(6, 'Cabbage', 'कोबी', 'पत्ता गोभी', 2, 1, 15500, 12, 'Cabbage.jpg'),
+(6, 'Cabbage', 'कोबी', 'पत्ता गोभी', 1, 1, 15500, 12, 'Cabbage.jpg'),
 (7, 'Capsicum', 'शिमला मिर्ची', 'शिमला मिर्च', 0, 1, 0, 0, 'Capsicum.jpg'),
 (9, 'Cauliflower', 'फुल कोबी', 'गोभी', 0, 1, 0, 20, 'Cauliflower.jpg'),
 (10, 'Chilli', 'मिरची', 'मिर्च', 0, 1, 0, 0, 'Chilli.jpeg'),
 (11, 'Cluster Beans', 'गवार', 'गवार', 0, 1, 0, 0, 'ClusterBeans.png'),
-(12, 'Coconut', 'नारळ', 'नारियल', 1, 2, 2, 20, 'Coconut.jpg'),
+(12, 'Coconut', 'नारळ', 'नारियल', 1, 2, 1, 20, 'Coconut.jpg'),
 (13, 'Coriander', 'कोथिंबीर', 'धनिया', 0, 2, 0, 0, 'CorianderLeaves.jpeg'),
 (14, 'Corn', 'मका', 'मक्का', 0, 1, 0, 0, 'Corn.jpg'),
 (15, 'Curry Leaves', 'कडीपत्ता', 'करी पत्ते', 0, 1, 0, 0, 'CurryLeaves.jpg'),
@@ -242,7 +276,7 @@ INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `category_type`, `typ
 (24, 'Jackfruit', 'फणस', 'कटहल', 0, 1, 0, 0, 'Jackfruit.jpg'),
 (25, 'Lady Finger', 'भेंडी', 'भिन्डी', 0, 1, 0, 0, 'LadyFinger.jpeg'),
 (26, 'Lemon', 'लिंबू', 'नींबू', 0, 1, 0, 0, 'Lemon.jpeg'),
-(27, 'Malabar Spinach', 'मलबार पालक', 'मलबार पालक', 0, 2, 40, 10, 'MalabarSpinach.jpg'),
+(27, 'Malabar Spinach', 'मलबार पालक', 'मलबार पालक', 1, 2, 40, 10, 'MalabarSpinach.jpg'),
 (28, 'Fenugreek', 'मेथी', 'मेंथी', 0, 2, 0, 0, 'Methi.jpg'),
 (29, 'Mint Leaves', 'पुदीना पाने', 'पुदीने की पत्तियां', 0, 2, 0, 0, 'MintLeaves.jpg'),
 (30, 'Mushroom', 'मशरूम', 'मशरूम', 0, 1, 0, 0, 'Mushroom.jpg'),
@@ -263,7 +297,9 @@ INSERT INTO `items` (`item_id`, `i_eng`, `i_mar`, `i_hin`, `category_type`, `typ
 (45, 'Tomato', 'टोमॅटो', 'टमाटर', 0, 1, 0, 0, 'Tomato.jpg'),
 (46, 'Turnip', 'सलगम', 'शलजम', 0, 1, 0, 0, 'Turnip.png'),
 (47, 'White Pumpkin', 'पांढरा भोपळा', 'सफेद कद्दू', 0, 1, 0, 0, 'WhitePumpin.jpg'),
-(84, 'Amul Milk', 'अमूल दूध', 'अमूल दूध', 3, 3, 7000, 12, '1629700977amul milk.jpg');
+(87, 'Apple', 'सफरचंद', 'सेब', 2, 1, 1750, 25, '1630175699apple.jpg'),
+(88, 'banana', ' केळी', 'केला', 2, 2, 22, 4, '1630175735banana.jpg'),
+(89, 'oil', 'oil', 'oil', 3, 3, 2000, 10, '1630224334Screenshot (129).png');
 
 -- --------------------------------------------------------
 
@@ -334,6 +370,12 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`index`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -379,7 +421,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `cart_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -388,10 +430,16 @@ ALTER TABLE `category`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `index` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `employee`
@@ -403,13 +451,13 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `finalorder`
 --
 ALTER TABLE `finalorder`
-  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `o_id` double NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `owner`
