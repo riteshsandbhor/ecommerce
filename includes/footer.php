@@ -14,12 +14,12 @@
 </head>
 <!--Footer-->
 <footer class="footer-distributed">
-  <div class="row d-flex text-center justify-content-center mb-md-0 mb-4" style="padding:0px 5px;margin-top:10px;">
+  <div class="row d-flex"  style="display:flex !important; justify-content:space-evenly;">
 
 <div class="footer-left"><!--Left-->
- <img src="../images/Logo.png" style="height: 10 0%; width: 60%;"><br><br>
+ <img src="../images/Logo.png"><br><br>
 </div>
-<div class="footer-center">
+<div class="footer-center" style="padding:0 !important; margin: 0 !important">
   <!-- Footer Links -->
   <div class="container footerlinks">
      <!-- Grid row--><br>

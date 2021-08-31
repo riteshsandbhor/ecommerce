@@ -35,8 +35,8 @@ a{
         width: 100%;
         text-align: left;
         font: 16px sans-serif;
-        padding: 40px 40px 50px 40px;
-        margin-top: 80px;
+        padding: 10px 20px 10px 20px;
+        margin-top: 20px;
     }
 
     .footerbold {
@@ -47,19 +47,17 @@ a{
     .footer-distributed .footer-center,
     .footer-distributed .footer-right {
         display: inline-block;
-        vertical-align: top;
     }
     /* Footer left */
 
     .footer-distributed .footer-left {
-        margin-top: 1%;
-        width: 30%;
-        text-align: center;
+        /* text-align: center; */
         background-color: #009975;
-        align-items: center;
     }
 
     .footer-distributed .footer-left img {
+        height: 80px;
+        width: auto;
         transition: all .3s ease-in-out;
     }
 
@@ -83,12 +81,8 @@ a{
 
     .footer-distributed .footer-center {
         color: white;
-        width: 35%;
         font-size: 16px;
-        border-radius: 50%;
         text-align: center;
-        line-height: 42px;
-        margin: 10px 15px;
         vertical-align: middle;
     }
 
@@ -96,18 +90,13 @@ a{
         width: 26%;
         color: white;
         font-size: 16px;
-        padding-top: 3%;
+        margin-top: 10px;
         text-align: center;
-        line-height: 42px;
-        margin: 10px 15px;
-        vertical-align: middle;
     }
 
     .footer-distributed .footer-center p {
         display: inline-block;
         color: white;
-        vertical-align: middle;
-        margin: 0;
     }
     /* Here is the code for Responsive Footer */
     /* You can remove below code if you don't want Footer to be responsive */
@@ -117,8 +106,7 @@ a{
         .footer-distributed .footer-center,
         .footer-distributed .footer-right {
             display: block;
-            width: 100%;
-            margin-bottom: 40px;
+            width: 33%;
             text-align: center;
         }
         .footer-distributed .footer-center i {
