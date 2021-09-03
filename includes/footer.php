@@ -19,6 +19,15 @@
 <div class="footer-left"><!--Left-->
  <img src="../images/Logo.png"><br><br>
 </div>
+
+<div class="footer-center links" >
+  <ul>
+    <li><a href="./policy.php#aboutus">ABOUT US</li>  
+    <li><a href="./policy.php#privacypolicy">PRIVACY POLICY</li>  
+    <li><a href="./policy.php#refund">REFUNDS/ CANCELLATION</li>  
+  <ul> 
+</div>
+
 <div class="footer-center" style="padding:0 !important; margin: 0 !important">
   <!-- Footer Links -->
   <div class="container footerlinks">
@@ -69,7 +78,6 @@
 </div> -->
 <div class="footer-right"><!--Right-->
     <p class="footerbold">D5-131, Ratnadeep CHS,OLD MHADA, Vasant Vihar, Pokharan Road No. 2, Thane: 400610, Maharashtra, India</p>
-
   </div>
 
   <!-- <div>

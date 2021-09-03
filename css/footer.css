@@ -98,9 +98,27 @@ a{
         display: inline-block;
         color: white;
     }
+
+    /* .links{
+        padding: 0px !important;
+    } */
+
+    .links ul{
+        list-style-type: none;
+        text-align: left !important;
+        padding: 0px !important;
+    }
+
+    .links ul li{
+        padding-top: 5px;
+    }
+
+    .links ul a{
+        text-decoration: none;
+        font: bold 16px sans-serif;
+    }
     /* Here is the code for Responsive Footer */
     /* You can remove below code if you don't want Footer to be responsive */
-
     @media (max-width: 880px) {
         .footer-distributed .footer-left,
         .footer-distributed .footer-center,
