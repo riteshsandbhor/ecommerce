@@ -43,16 +43,20 @@ if (isset($_SESSION['Custid'])) {
               <br>
               <p style="line-height: 2;text-align:justify;";>
               <strong>What is mahalaxmivegetables.com?</strong><br>
-              mahalaxmivegetables.com is Thane largest online fresh Fruits and Vegetables Shop. We guarantee on
-              time delivery, and the best quality!<br><br>
-              <strong>Delivery Time-Frame:</strong><br>
-              1) Currently delivery of farm fresh fruits &amp; vegetables will be restricted to within Thane city only.<br>
-
-              2) Delivery of orders will be done within atleast 12 hours from placing the order.<br>
-
-              3) In a very rare case, delivery are delayed due to various reasons unforeseen for example, natural
-              calamities, lockouts, bandhs, octroi and/or any other unforeseen problems. We would try through the
-              best of means available to ensure safe arrival of your products; we request your patience on the same.<br><br>
+                Shree Mahalaxmi Vegetables (Shetkari To Grahak) belongs to the group of farmers from Pune District offering a wide range of fresh and 100% natural vegetables and fruits directly from farm. We are starting this journey by working in the perishables of Vegetables and Fruits. Due to considering COVID'19 Security Paramenters, We offers a simplest way of shopping for fresh and sanitized veggies and fruits with a minimal human touch and maintian beeter hygiene. Our responsibility is to assure our clients and strengthen good relations with them by providing the superior quality fresh products at the best rates. In coming days, We also going to provide provide kitchen essentials, dairy products which important related to food and kitchen.
+                <br><br>
+                <strong>Vision</strong><br>
+                Shree Mahalaxmi Vegetables want to feel gape between farmers to customers and would like to build a good and long-lasting relationship with our consumers. 
+                <br><br>
+                <strong>Mission</strong><br>
+                Our main mission is to provide fresh quality vegetables and fruits at low rates. 
+                <br><br>
+                <strong>Our Salient Features :</strong><br>
+                1. Provide Good Quality fresh Vegetables, Fruits and others product directly from farmers to customers.<br>
+                2. Vast range and Best offers on product.<br>
+                3. We don’t compromise with quality.<br>
+                4. Hygenic and environment-friendly packing.<br>
+                5. Faster delivery.<br><br>
               </p><br>
             </div>
           </div>
@@ -92,18 +96,24 @@ if (isset($_SESSION['Custid'])) {
               <div class="container"pt-3>
                 <h3>REFUNDS/CANCELLATION</h3><br>
                 <p style="line-height: 2;text-align:justify;";>
-                <strong>Cancellation by Customer</strong><br>
-                  You as a customer can cancel your order anytime up to the cut-off time of the slot for which you have
-                  placed an order by calling our Helpline Number. In such a case we will refund any payments already
-                  made by you for the order.<br><br>
-
-                  <strong>Return &amp; Refunds</strong><br>
-
-                  We have a &quot;no questions asked return and refund policy&quot; which entitles all our members to return the
-                  product at the time of delivery if due to some reason they are not satisfied with the quality or freshness
-                  of the product. We will take the returned product back with us and issue a credit note for the value of
-                  the return products which will be credited to your account on the Site. This can be used to pay your
-                  subsequent shopping bills.<br><br>
+                  <strong>Cancellation by Customer</strong><br>
+                  Our focus is on complete customer fulfillment. In the event, if you are displeased with the services provided, we will refund back the money, provided the reasons are genuine Any order booked can be fully cancelled for upto the time the delivery slot has not been triggered/ order has not been shipped. Our cancellation and refund will be as follows:
+                  <br><br>
+                  In order to cancel your order or to partially edit your order, please contact us by WhatsApp or Call us on +919819 217 208 and we will help you on a priority basis.
+                  <br><br>
+                  Customers complaints related to undelivered items / not good quality items will be accepted within 48 hours of delivery only. All customer complaints will be addressed and refunds will be issued where applicable. In order to raise such a complaint, please mention order id, payment mode along with payment screenshot, problem description and photo of product under consideration (if applicable) on whatsapp customer support number +919819 217 208.
+                  <br><br>
+                  Customer complaints related to items delivered in less quantity than paid for will be accepted for upto 24 hours from delivery only. In such cases, returns will not be accepted and the difference amount will be calculated as per the discretion of the customer support only if customer is unable to prove wrong weight of materials.
+                  <br><br>
+                  Shree Mahalaxmi Vegetables (Shetkari To Grahak) mahalaxmivegetables.com will issue any refunds for any undelivered items the Next day by 4 pm through Cash or Gpay. The refunds will be made to customer registered number given by at the time of registration.
+                  <br><br>    
+                  In case any client is not completely satisfied with our products we can provide a refund.<br> 
+                  To be eligible for a return in the following cases:<br>
+                  1. Due to delay delivery of items<br>
+                  2. Poor packaging and items decomposed within 24 hours of delivery<br>
+                  3. Due to nondelivery or logistic issues<br>
+                  4. Unavailable or missing items (in case of missing items, only missing items amount will be refunded)<br>
+                  5. Less weight than ordered<br><br>
                 </p><br>
               </div>
             </div>
