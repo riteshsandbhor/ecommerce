@@ -22,9 +22,11 @@
 
 <div class="footer-center links" >
   <ul>
-    <li><a href="./policy.php#aboutus">ABOUT US</li>  
-    <li><a href="./policy.php#TC">TERMS & CONDITIONS</li>  
-    <li><a href="./policy.php#refund">REFUNDS/ CANCELLATION</li>  
+    <li><a href="./policy.php#aboutus">About Us</li>  
+    <li><a href="./policy.php#privacypolicy">Privacy Policy</li>  
+    <li><a href="./policy.php#refund">Refunds/ Cancellation</li>  
+    <li><a href="./policy.php#shippingpolicy">shipping Policy</li>  
+    <li><a href="./policy.php#TC">Terms & Conditions</li>  
   <ul> 
 </div>
 
