@@ -17,13 +17,13 @@
   <div class="row d-flex"  style="display:flex !important; justify-content:space-evenly;">
 
 <div class="footer-left"><!--Left-->
- <img src="../images/Logo.png"><br><br>
+  <a href = "./home.php"><img href="./home.php" src="../images/Logo.png"><br><br></a>
 </div>
 
 <div class="footer-center links" >
   <ul>
     <li><a href="./policy.php#aboutus">ABOUT US</li>  
-    <li><a href="./policy.php#privacypolicy">PRIVACY POLICY</li>  
+    <li><a href="./policy.php#TC">TERMS & CONDITIONS</li>  
     <li><a href="./policy.php#refund">REFUNDS/ CANCELLATION</li>  
   <ul> 
 </div>
