@@ -83,6 +83,8 @@ $lang = array(
     'edit_item'=> 'EDIT ITEM',
     'verify_email'=> 'VERIFY EMAIL',
     'change_verify_email'=> 'CHANGE AND VERIFY EMAIL',
+    'Vegetable'=> 'Vegetable',
+    'Fruits'=> 'Fruits',
     'all'=>'ALL'
 
 

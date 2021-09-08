@@ -18,7 +18,7 @@ btn.onclick = ()=>{
              let data = xhr.response;
             if(data == "success"){
                 alert('Email Sent!');
-                window.location='./forgotPassword.php';
+                window.location='./forgotpassword.php';
             }else{
                 errortxt.textContent = data;
                 errortxt.style.display = "block";
