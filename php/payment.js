@@ -7,7 +7,7 @@ form.onsubmit = (e)=>{
 }
 
 var options = {
-    "key": "rzp_test_vBY5UEWW8EUUGX", // Enter the Key ID generated from the Dashboard
+    "key": "rzp_live_yR7lAamf1dW9Ea", // Enter the Key ID generated from the Dashboard
     "amount": amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": "Farm Fresh",
