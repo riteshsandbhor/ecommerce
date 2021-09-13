@@ -7,10 +7,11 @@ form.onsubmit = (e)=>{
 }
 
 var options = {
-    "key": "rzp_live_yR7lAamf1dW9Ea", // Enter the Key ID generated from the Dashboard
+    "key": "rzp_live_n2vNENbR845hk3", // Enter the Key ID generated from the Dashboard
+    // "key": "rzp_test_vBY5UEWW8EUUGX", // Enter the Key ID generated from the Dashboard
     "amount": amount*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
-    "name": "Farm Fresh",
+    "name": "Shetkari To Grahak",
     "description": "Payment",
     "image": "../images/Logo.png",
     "handler": function (response){
@@ -18,7 +19,11 @@ var options = {
     }
     
 };
+
 var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+    alert(response.error.description);
+});
 btn.onclick = function(){
     //Ajax
     let xhr = new XMLHttpRequest(); //creating XML object
