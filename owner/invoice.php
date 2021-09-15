@@ -1,15 +1,17 @@
 <?php
   include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
   session_start();
-  if (isset($_SESSION['Custid']) && isset($_POST['invoice'])) {
-    $id=$_SESSION['Custid'];
-    $orderid=$_POST['orderid'];
-    $delivertime=$_POST['delivertime'];
-    $ordertime=$_POST['ordertime'];
+  if (isset($_SESSION['Ownerid'])) {
+    $oid=$_SESSION['Ownerid'];
   }else {
-    header("Location: ./home.php");
+    header("Location: ./ownerlogin.php");
   }
   if (isset($_POST['invoice'])) {
+    $id = $_POST['c_id'];
+    $orderid = $_POST['orderid'];
+    $ordertime = $_POST['ordertime'];
+    $delivertime = $_POST['dispatchtime'];
+    echo $id;
     $result13 = mysqli_query($con, "SELECT * FROM customer WHERE c_id=$id;");
     $row13 = mysqli_fetch_assoc($result13);
 
@@ -161,7 +163,8 @@
             scheduled delivery
             <br>
             <br>
-            Contact us on: +919819217208</p>
+            Contact us on: +919819217208
+            </p>
         
     </div>
     </body>

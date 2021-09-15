@@ -17,7 +17,6 @@ var options = {
     "handler": function (response){
         dbhandler(response);
     }
-    
 };
 
 var rzp1 = new Razorpay(options);

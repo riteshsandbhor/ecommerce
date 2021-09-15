@@ -120,7 +120,7 @@ if (isset($_SESSION['logintype'])) {
           <th scope="col">Order No.</th>
           <th scope="col">Order Date</th>
           <th scope="col">Delivery Date</th>
-          <th scope="col">Recipt</th>
+          <th scope="col">Receipt</th>
         </tr>
       </thead>
       <tbody>

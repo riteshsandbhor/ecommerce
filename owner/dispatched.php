@@ -33,6 +33,7 @@ if (isset($_SESSION['Ownerid'])) {
     <th scope="col">Order No.</th>
     <th scope="col">Dispatched At</th>
     <th scope="col">Details</th>
+    <th scope="col">Receipt</th>
   </tr>
   </thead>
   <tbody>
@@ -56,6 +57,15 @@ if (isset($_SESSION['Ownerid'])) {
                 <input type="hidden" name="dispatchtime" value="'.$dispatchtime.'">
                 <input type="hidden" name="deliveryboyid" value="'.$row1['deliveryboy'].'">
                 <input type="submit"class="btn btnwhite" name="vieworderitems" value="View">
+              </form>
+              </th>
+              <th scope="col">
+              <form action="./invoice.php" method="post" id="form1">
+                <input type="hidden" name="orderid" value="'.$row1['o_id'].'">
+                <input type="hidden" name="ordertime" value="'.$ordertime.'">
+                <input type="hidden" name="dispatchtime" value="'.$dispatchtime.'">
+                <input type="hidden" name="c_id" value="'.$row1['c_id'].'">
+                <input type="submit"class="btn btnwhite" name="invoice" value="Print">
               </form>
               </th>
             </tr>';
