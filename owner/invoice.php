@@ -111,7 +111,7 @@
     
     <div id='printContainer'>
         <h2 id='slogan' style='margin-top:0' class='text-center'>Mahalaxmi Vegetables</h2>
-    
+        <div style='border: 1px; border-style: dotted none none none;'><div>
         <table>
             <tr>
                 <td>Order No.</td>
@@ -133,6 +133,10 @@
             <tr>
                 <td>Delivered At</td>
                 <td>: $delivertime</td>
+            </tr>
+            <tr>
+              <td>Address</td>
+              <td>: $address</td>
             </tr>
         </table>
         <hr>
