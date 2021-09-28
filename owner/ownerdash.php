@@ -1,12 +1,12 @@
 <?php
-include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
-session_start();
-if (isset($_SESSION['Ownerid'])) {
-  $id=$_SESSION['Ownerid'];
-  }else {
-  header("Location: ./ownerlogin.php");
-}
- ?>
+  include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
+  session_start();
+  if (isset($_SESSION['Ownerid'])) {
+    $id=$_SESSION['Ownerid'];
+    }else {
+    header("Location: ./ownerlogin.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,13 +52,13 @@ if (isset($_SESSION['Ownerid'])) {
               <th scope="col">'.$row1['o_id'].'</th>
               <th scope="col">'.$ordertime.'</th>
               <th scope="col">
-              <form action="./order.php" method="post" id="form1">
-                <input type="hidden" name="orderid" value="'.$row1['o_id'].'">
-                <input type="hidden" name="customerid" value="'.$row1['c_id'].'">
-                <input type="hidden" name="ordertime" value="'.$ordertime.'">
-                <input type="hidden" name="deliveryboy" value="1">
-                <input type="submit"class="btn btnwhite" name="vieworderitems" value="View">
-              </form>
+                <form action="./order.php" method="post" id="form1">
+                  <input type="hidden" name="orderid" value="'.$row1['o_id'].'">
+                  <input type="hidden" name="customerid" value="'.$row1['c_id'].'">
+                  <input type="hidden" name="ordertime" value="'.$ordertime.'">
+                  <input type="hidden" name="deliveryboy" value="1">
+                  <input type="submit"class="btn btnwhite" name="vieworderitems" value="View">
+                </form>
               </th>
             </tr>';
         }

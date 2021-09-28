@@ -67,6 +67,7 @@
       $type=$row1['type'];
       $itemid=$row1['item_id'];
       $price=$row1['price'];
+      $nonDPrice = $row1['non_discounted_price'];
       $type=$row1['type'];
       $quantity=$row1['quantity'];
       if ($type==1) {
@@ -74,6 +75,7 @@
           $avaiquantity=($quantity/1000);
           $allok=1;
           $finalprice=$price*4;
+          $nonDPrice=$nonDPrice*4;
           $unit="kg";
         }
       }
@@ -101,7 +103,8 @@
             <img style=" width:100%;height: 200px;background-size: contain;"  src="../images/Veg/'.$img.'" alt="Card image cap">
             </figure>
             <div class="card-body" style="width:80%;margin:auto;">
-                <h5 class="card-title name">'.lang($eng).'</h5>
+                <h5 class="card-title name">'.lang($eng).' </h5>
+                <p class="dp">₹'.$finalprice.' <span class="ndp">₹'.$nonDPrice.'</span></p>
                 <form method="post">
                 <input type="hidden" name="itemid" value="'.$itemid.'">
                 <input type="hidden" name="itemtype" value="'.$type.'">

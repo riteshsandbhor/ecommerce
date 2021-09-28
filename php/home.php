@@ -1,6 +1,17 @@
 <?php
 session_start();
 include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
+session_start();
+if(isset($_COOKIE['user'])){
+  $cookie = $_COOKIE['user'];
+  $sqln = mysqli_query($con, "SELECT * FROM customer WHERE cookie = '{$cookie}'");
+  if(mysqli_num_rows($sqln) > 0){
+    $rown = mysqli_fetch_assoc($sqln);
+    $id = $rown['c_id'];
+    $_SESSION['Custid'] = $id;
+    $_SESSION['logintype'] = "1";
+  }
+}
 if (isset($_SESSION['Custid'])) {
   $id=$_SESSION['Custid'];
   if (isset($_POST['addtocart'])) {

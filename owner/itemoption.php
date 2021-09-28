@@ -12,15 +12,16 @@ if (isset($_SESSION['Ownerid'])) {
     $itemid=$_POST['item'];
     $quantity=$_POST['quantity'];
     $price=$_POST['price'];
-    $query = "UPDATE items SET quantity=$quantity, price=$price WHERE item_id=$itemid";
+    $dprice=$_POST['dprice'];
+    $query = "UPDATE items SET quantity=$quantity, price=$dprice, non_discounted_price=$price WHERE item_id=$itemid";
     $result = mysqli_query($con, $query);
     echo "<script type='text/javascript'>
     alert('Quantity and Price updated Successfully.');
-     window.location='./ownerdash.php';
+     window.location='./itemoption.php#stock';
        </script>";
   }
   }else {
-  header("Location: ./ownerlogin.php");
+  header("Location: ./itemoption.php#stock");
 }
 
  ?>
@@ -78,6 +79,15 @@ if (isset($_SESSION['Ownerid'])) {
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+      <label for dprice><b>Discounted Price (for 250g, 250ml, 1 Piece)</b> </label>
+        <input type="number" name="dprice" class="form-control category customselect classic"id="dprice" placeholder="DiscountedPrice (for 250g, 250ml, 1 Piece)">
+      <span id="dprimsg"></span>
+      </div>
+    </div>
+  </div>
   <br>
   <div class="text-center">
       <button class="btn btngreen" name="itementry" id="btn">Enter</button>
@@ -87,6 +97,8 @@ if (isset($_SESSION['Ownerid'])) {
 
 
 <br><br><br><br>
+<section id="stock">
+
 <div class="card ownercard">
   <h3 style="text-align:center;">Stock</h3><br><br>
   <table class="table table-hover" style="padding:20px;">
@@ -95,6 +107,7 @@ if (isset($_SESSION['Ownerid'])) {
     <th scope="col">Items</th>
     <th scope="col">Quantity</th>
     <th scope="col">Price (per 250g, 250ml, 1 Piece)</th>
+    <th scope="col">Discounted Price</th>
   </tr>
 </thead>
 <tbody>
@@ -127,6 +140,7 @@ if (isset($_SESSION['Ownerid'])) {
             <tr>
               <th scope="col">'.$row1['i_eng'].'</th>
               <th scope="col">'.$fquantity.' '.$unit.'</th>
+              <th scope="col">'.$row1['non_discounted_price'].'</th>
               <th scope="col">₹'.$row1['price'].'</th>
             </tr>';
 
@@ -138,6 +152,7 @@ if (isset($_SESSION['Ownerid'])) {
 </tbody>
 </table>
 </div><br><br>
+</section>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -174,9 +189,24 @@ $(document).ready(function(){
        }
        buttonState();
    });
+   $("#dprice").keyup(function(){
+  // check
+     if(valdpri()){
+
+       $("#dprice").css("border","2px solid #009975");
+
+       $("#dprimsg").html("<p class='text-success'>Validated</p>");
+      }else{
+
+       $("#dprice").css("border","2px solid red");
+
+        $("#dprimsg").html("<p class='text-danger'>Must be number</p>");
+       }
+       buttonState();
+   });
 });
    function buttonState(){
-    if(valpri() && valqua()){
+    if(valpri() && valdpri() && valqua()){
 
       $("#btn").prop('disabled', false);
     }else{
@@ -198,6 +228,15 @@ $(document).ready(function(){
   function valpri(){
     var number_check=new RegExp('[0-9]');
     var pr=$("#price").val();
+    if(pr.match(number_check)){
+      return true;
+    }  else{
+      return false;
+    }
+  }
+  function valdpri(){
+    var number_check=new RegExp('[0-9]');
+    var pr=$("#dprice").val();
     if(pr.match(number_check)){
       return true;
     }  else{

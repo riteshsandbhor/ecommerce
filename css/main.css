@@ -425,3 +425,20 @@ p.pagehead:before {
         width: 100%;
     }
 }
+
+.dp{
+    font-weight: 500;
+    font-size: larger;
+    color: #009975;
+}
+
+span.ndp {
+    text-decoration: line-through;
+    font-size: small;
+    color: #949494;
+}
+
+select {
+    width: auto !important;
+    float: none !important;
+}

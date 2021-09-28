@@ -3,8 +3,9 @@ session_start();
 if(isset($_SESSION['logintype'])){
 
   if ($_SESSION['logintype']==1) {
+    setcookie("user", "", time() - (3600), "/"); // 86400 = 1 day
     session_destroy();
-   header("Location: ./home.php");
+    header("Location: ./home.php");
   }
 
   if ($_SESSION['logintype']==0) {

@@ -78,15 +78,21 @@
       <h5>Mobile No. :&nbsp;&nbsp;&nbsp; <?php echo $row13['c_phone']; ?> </h5>
       <h5>Email Id : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo  $row13['c_email']; ?> </h5>
       <h5>Address :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $row13['c_address']; ?> <?php echo $row13['c_pin']; ?> </h5>
-      <?php if (isset($_POST['deliveryboyid'])) { ?>
+      <?php if (isset($_POST['deliveryboyid']) && $_POST['deliveryboyid'] != -1) { ?>
         <h5>Delivered By :&nbsp; <?php echo $deliverboy; ?></h5>
       <?php } ?>
       <h5>Ordered At :&nbsp;&nbsp;&nbsp; <?php echo $ordertime; ?></h5>
-      <?php if (isset($dispatchtime)) { ?>
-      <h5>Dispatched At:<?php echo $dispatchtime; ?></h5>
-      <?php } ?>
-      <?php if (isset($delivertime)) { ?>
-      <h5>Delivered At:&nbsp;&nbsp;&nbsp;<?php echo $delivertime; ?></h5>
+
+      <?php if($fetch['cancel'] == 1){?>
+        <h5>Canceled On:&nbsp;&nbsp;<?php echo $delivertime; ?></h5>
+      <?php }else{ ?>
+        <?php if (isset($dispatchtime)) { ?>
+          <h5>Dispatched At:<?php echo $dispatchtime; ?></h5>
+        <?php } ?>
+
+        <?php if (isset($delivertime)) { ?>
+          <h5>Delivered At:&nbsp;&nbsp;&nbsp;<?php echo $delivertime; ?></h5>
+        <?php } ?>
       <?php } ?>
       <?php if ($payment_id != "COD") { ?>
       <h5>Payment TYPE:&nbsp;&nbsp;&nbsp;ONLINE</h5>
@@ -175,40 +181,47 @@
       <input type="hidden" name="orderid" value="<?php echo $orderid; ?>">
       <div class="row">
         <div class="col">
-      <div class="form-group">
-      <select class="form-control customselect classic" name="empid" id="item" required>
-        <option value="" selected disabled>Select item</option>
-        <?php
-        $query = "SELECT d_id,f_name,l_name FROM employee;";
-        $result = mysqli_query($con, $query);
-        if (mysqli_num_rows($result) > 0)
-        {
-          while ($row1 = mysqli_fetch_assoc($result)) {
-                echo '<option value="'.$row1['d_id'].'">'.$row1['f_name'].' '.$row1['l_name'].'</option>';
-            }
-          }
-         ?>
-      </select>
-    </div>
-  </div>
-    <div class="col">
-        <button class="btn btngreen" name="dispatcheddelivery" id="btn">Dispatch</button>
-  </div>
-  </div>
+          <div class="form-group">
+            <select class="form-control customselect classic" name="empid" id="item" required>
+              <option value="" selected disabled>Select item</option>
+              <?php
+              $query = "SELECT d_id,f_name,l_name FROM employee;";
+              $result = mysqli_query($con, $query);
+              if (mysqli_num_rows($result) > 0)
+              {
+                while ($row1 = mysqli_fetch_assoc($result)) {
+                      echo '<option value="'.$row1['d_id'].'">'.$row1['f_name'].' '.$row1['l_name'].'</option>';
+                  }
+                }
+              ?>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <button class="btn btngreen" name="dispatcheddelivery" id="btn">Dispatch</button>
+        </div>
+      </div>
     </form>
-
+    <form action="./cancelOrder.php">
+      <input type="hidden" name="orderid" value="<?php echo $orderid; ?>">
+      <input style="padding:1% !important;" type="submit"class="del btn btndelete" name="cancel" value="Cancel Order">
+    </form>
   <?php } ?>
   <?php } ?>
 
+  <?php if($fetch['cancel'] == 1){?>
+    <h5 style="text-align:center; color: red">ORDER CANCELED</h5>
+  <?php } ?>
 
 
 
-  </div>
-         <?php include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'footer.php';   ?>
 
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-  </html>
+</div>
+<?php include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'footer.php';?>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <?php
-include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
-session_start();
-if (isset($_SESSION['logintype'])) {
-  $id=$_SESSION['Custid'];
+  include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
+  session_start();
+  if (isset($_SESSION['logintype'])) {
+    $id=$_SESSION['Custid'];
   }else {
-  header("Location: ./home.php");
-}
+    header("Location: ./home.php");
+  }
  ?>
 <html>
   <head>
@@ -138,14 +138,22 @@ if (isset($_SESSION['logintype'])) {
                     <th scope="col">'.$row1['o_id'].'</th>
                     <th scope="col">'.$ordertime.'</th>
                     <th scope="col">'.$delivertime.'</th>
-                    <th scope="col">
-                    <form action="./invoice.php" method="post" id="form1">
-                      <input type="hidden" name="orderid" value="'.$row1['o_id'].'">
-                      <input type="hidden" name="ordertime" value="'.$ordertime.'">
-                      <input type="hidden" name="delivertime" value="'.$delivertime.'">
-                      <input type="submit"class="btn btnwhite" name="invoice" value="View">
-                    </form></th>
-                  </tr>';
+                    <th scope="col">';
+                    
+                    if($row1["cancel"] == 0) {
+                      echo 
+                        '<form action="./invoice.php" method="post" id="form1">
+                          <input type="hidden" name="orderid" value="'.$row1['o_id'].'">
+                          <input type="hidden" name="ordertime" value="'.$ordertime.'">
+                          <input type="hidden" name="delivertime" value="'.$delivertime.'">
+                          <input type="submit"class="btn btnwhite" name="invoice" value="View">
+                        </form>';
+                    }else{
+                      echo '<p style="color:red">CANCELED</p>';
+                    }
+                    echo '</th>
+                          </tr>';
+                    
               }
             }
 

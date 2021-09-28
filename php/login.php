@@ -1,6 +1,17 @@
 <?php
 include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
 session_start();
+if(isset($_COOKIE['user'])){
+  $cookie = $_COOKIE['user'];
+  $sqln = mysqli_query($con, "SELECT * FROM customer WHERE cookie = '{$cookie}'");
+  if(mysqli_num_rows($sqln) > 0){
+    $rown = mysqli_fetch_assoc($sqln);
+    $id = $rown['c_id'];
+    $_SESSION['Custid'] = $id;
+    $_SESSION['logintype'] = "1";
+    header("Location: ./home.php");
+  }
+}
 if (isset($_SESSION['Custid'])) {
   header("Location: ./home.php");
 }
@@ -13,6 +24,13 @@ if (isset($_POST['logincustomer'])) {
   $pass = $row['c_password'];
   $password = mysqli_real_escape_string($con,$_POST['c_password']);
   if (password_verify($password, $pass)) {
+    $random = rand(10001, 99999);
+    $hashvalue = md5($mail);
+    $cookie_value = $hashvalue.$random;
+    $sql = mysqli_query($con, "UPDATE customer SET cookie = '{$cookie_value}' WHERE c_id = {$id}");
+    if($sql){
+      setcookie("user", $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+    }
     $_SESSION['Custid'] = $id;
     $_SESSION['logintype'] = "1";
     // echo "Session set";
