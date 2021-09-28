@@ -7,9 +7,11 @@ if(isset($_COOKIE['user'])){
   $sqln = mysqli_query($con, "SELECT * FROM customer WHERE cookie = '{$cookie}'");
   if(mysqli_num_rows($sqln) > 0){
     $rown = mysqli_fetch_assoc($sqln);
-    $id = $rown['c_id'];
-    $_SESSION['Custid'] = $id;
-    $_SESSION['logintype'] = "1";
+    if($cookie == $rown['cookie']){
+      $id = $rown['c_id'];
+      $_SESSION['Custid'] = $id;
+      $_SESSION['logintype'] = "1";
+    }
   }
 }
 if (isset($_SESSION['Custid'])) {

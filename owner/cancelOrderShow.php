@@ -20,19 +20,18 @@ if (isset($_SESSION['Ownerid'])) {
    ?>
 <!--NavBar Ends-->
 <br><br>
-<div class="card ownercard">
-  <h3 style="text-align:center;">Dispatched Orders</h3>
-  <table class="table table-hover" style="padding:20px;">
+<div style="width: 600px" class="card ownercard">
+  <h3 style="text-align:center;">Canceled Orders</h3>
+  <table class="table table-hover" style="padding:20px;text-align:center;">
   <thead>
   <tr>
     <th scope="col">Order No.</th>
-    <th scope="col">Dispatched At</th>
     <th scope="col">Details</th>
   </tr>
   </thead>
   <tbody>
     <?php
-    $query = "SELECT * FROM finalorder WHERE delivery=1 && deliveryboy!=0 && cancel=0 ORDER BY timedelivery DESC;";
+    $query = "SELECT * FROM finalorder WHERE delivery=1 && deliveryboy!=0 && cancel=1 ORDER BY timedelivery DESC;";
     $result = mysqli_query($con, $query);
     if (mysqli_num_rows($result) > 0)
     {
@@ -43,7 +42,6 @@ if (isset($_SESSION['Ownerid'])) {
             echo '
             <tr>
               <th scope="col">'.$row1['o_id'].'</th>
-              <th scope="col">'.$delivertime.'</th>
               <th scope="col">
               <form action="./order.php" method="post" id="form1">
                 <input type="hidden" name="orderid" value="'.$row1['o_id'].'">

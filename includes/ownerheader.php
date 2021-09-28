@@ -50,6 +50,9 @@ include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'langs'.DIRECTORY_SEPARAT
         <a class="nav-link active" href="./delivered.php">Delivered</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link active" href="./cancelOrderShow.php">Cancel Order</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link active" href="./additems.php">Add Item</a>
       </li>
       <li class="nav-item">

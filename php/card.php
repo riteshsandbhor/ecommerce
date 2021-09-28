@@ -84,7 +84,7 @@
           $avaiquantity=($quantity);
           $allok=1;
           $finalprice=$price;
-          $unit="pieces";
+          $unit="piece";
         }
       }
       else if ($type==3) {
@@ -104,7 +104,7 @@
             </figure>
             <div class="card-body" style="width:80%;margin:auto;">
                 <h5 class="card-title name">'.lang($eng).' </h5>
-                <p class="dp">₹'.$finalprice.' <span class="ndp">₹'.$nonDPrice.'</span></p>
+                <p class="dp"><span class="ndp">₹'.$nonDPrice.'</span> ₹'.$finalprice.'<span>/'.$unit.'</span></p>
                 <form method="post">
                 <input type="hidden" name="itemid" value="'.$itemid.'">
                 <input type="hidden" name="itemtype" value="'.$type.'">
@@ -113,7 +113,7 @@
                 if ($type==1) {
                   echo'
                     <div class="form-group">
-                      <select class="form-control customselect classic" name="quantity1" id="qty" required>
+                      <select class="form-control customselect classic qtydrpdn" name="quantity1" id="qty" required>
                         <option value="" selected disabled>'.lang('quantity').'</option>
                         <option value="250">250g&nbsp;&nbsp;&nbsp;&nbsp;₹'.((250/250)*$price).' </option>
                         <option value="500">500g&nbsp;&nbsp;&nbsp;&nbsp;₹'.((500/250)*$price).' </option>
@@ -128,7 +128,7 @@
                 if ($type==2) {
                   echo'
                     <div class="form-group">
-                      <select class="form-control customselect classic" name="quantity1" id="qty" required>
+                      <select class="form-control customselect classic qtydrpdn" name="quantity1" id="qty" required>
                         <option value="" selected disabled>'.lang('quantity').'</option>
                         <option value="1">1 piece&nbsp;&nbsp;&nbsp;&nbsp;₹'.(1*$price).'</option>
                         <option value="2">2 pieces&nbsp;&nbsp;&nbsp;₹'.(2*$price).'</option>
@@ -141,7 +141,7 @@
                 if ($type==3) {
                   echo'
                     <div class="form-group">
-                      <select class="form-control customselect classic" name="quantity1" id="qty" required>
+                      <select class="form-control customselect classic qtydrpdn" name="quantity1" id="qty" required>
                         <option value="" selected disabled>'.lang('quantity').'</option>
                         <option value="250">250 ml&nbsp;&nbsp;&nbsp;&nbsp;₹'.((250/250)*$price).' </option>
                         <option value="500">500 ml&nbsp;&nbsp;&nbsp;&nbsp;₹'.((500/250)*$price).' </option>
@@ -156,10 +156,7 @@
                 echo '
                   <div class="row">
                     <div class="col">
-                      <input type="button" class="btn btngreen" style="text-align:left;" value="₹'.$finalprice.'/'.$unit.'"/>
-                    </div>
-                    <div class="col">
-                      <input type="submit" name="addtocart" class="btn btnwhite" value="'.lang('add_to_cart').'">
+                      <input type="submit" name="addtocart" class="btn btnwhite addtocart" value="'.lang('add_to_cart').'">
                     </div>
                   </div>
                   </form>
