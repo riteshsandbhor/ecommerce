@@ -41,6 +41,8 @@ if (isset($_SESSION['Custid'])) {
      else if ($itemtype==3) {
       $conversion=$final/250;
       $finalprice=$itemprice*$conversion;
+    }else if ($itemtype==4) { 
+      $finalprice=$itemprice*$final;
     }
      $query= "UPDATE `cart` SET weight=$final,price=$finalprice WHERE cart_id=$cartid ";
      $result = mysqli_query($con, $query);
@@ -55,6 +57,8 @@ if (isset($_SESSION['Custid'])) {
      else if ($itemtype==3) {
       $conversion=$quantity/250;
       $finalprice=$itemprice*$conversion;
+    }else if ($itemtype==4) {
+      $finalprice=$itemprice*$quantity;
     }
      $query= "INSERT INTO `cart`(`c_id`, `item_id`, `weight`, `price`) VALUES ($id,$itemid,$quantity,$finalprice)";
      $result = mysqli_query($con, $query);

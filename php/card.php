@@ -94,6 +94,13 @@
           $finalprice=$price*4;
           $unit="litre";
         }
+      }else if ($type==4) {
+        if ($quantity > 0) {
+          $avaiquantity=($quantity);
+          $allok=1;
+          $finalprice=$price;
+          $unit="packet";
+        }
       }
       if ($allok==1) {
         echo '
@@ -150,6 +157,19 @@
                         <option value="2000">2 litre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹'.((2000/250)*$price).' </option>
                         <option value="3000">3 litre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹'.((3000/250)*$price).' </option>
                         <option value="5000">5 litre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;₹'.((5000/250)*$price).' </option>
+                      </select>
+                    </div>';
+                }
+                if ($type == 4) {
+                  echo'
+                    <div class="form-group">
+                      <select class="form-control customselect classic qtydrpdn" name="quantity1" id="qty" required>
+                        <option value="" selected disabled>'.lang('quantity').'</option>
+                        <option value="1">1 packet&nbsp;&nbsp;&nbsp;&nbsp;₹'.(1*$price).'</option>
+                        <option value="2">2 packets&nbsp;&nbsp;&nbsp;₹'.(2*$price).'</option>
+                        <option value="3">3 packets&nbsp;&nbsp;&nbsp;₹'.(3*$price).'</option>
+                        <option value="4">4 packets&nbsp;&nbsp;&nbsp;₹'.(4*$price).'</option>
+                        <option value="5">5 packets&nbsp;&nbsp;&nbsp;₹'.(5*$price).'</option>
                       </select>
                     </div>';
                 }

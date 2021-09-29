@@ -90,17 +90,26 @@ if (isset($_SESSION['Custid'])) {
             $unit="pieces";
            }
          }
-         if ($type==3) {
+         else if ($type==3) {
           $finalprice=$price;
-         $totalfinalprice=$totalfinalprice+$finalprice;
-         if ($weight < 1000) {
-           $unit="ml";
-         }
-         else {
-            $unit="litre";
-            $weight=$weight/1000;
-         }
-       }
+          $totalfinalprice=$totalfinalprice+$finalprice;
+          if ($weight < 1000) {
+            $unit="ml";
+          }
+          else {
+              $unit="litre";
+              $weight=$weight/1000;
+          }
+        }else if ($type==4) {
+          $finalprice=$price;
+          $totalfinalprice=$totalfinalprice+$finalprice;
+          if ($weight == 1) {
+            $unit="packet";
+          }
+          else {
+           $unit="packets";
+          }
+        }
 
          echo '
          <div class="subcontain1 box">

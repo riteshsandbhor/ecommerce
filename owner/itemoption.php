@@ -44,7 +44,7 @@ if (isset($_SESSION['Ownerid'])) {
    ?>
 <!--NavBar Ends-->
 <br><br>
-<div class="card ownercard" style="padding:10px 50px">
+<div class="card ownercard" style="padding:10px 50px;max-width: 680px">
   <h3 style="text-align:center;">Enter Stock Quantity & Price</h3><br><br>
   <form class="" action="" method="post">
     <div class="form-group">
@@ -65,16 +65,16 @@ if (isset($_SESSION['Ownerid'])) {
   <div class="row">
     <div class="col">
       <div class="form-group">
-      <label for quantity><b>Quantity (Grams, ml, piece)</b> </label>
-        <input type="number" name="quantity" class="form-control category customselect classic"id="quantity" placeholder="Quantity in (Grams, ml, piece)">
+      <label for quantity><b>Quantity (Grams, ml, piece/packet)</b> </label>
+        <input type="number" name="quantity" class="form-control category customselect classic"id="quantity" placeholder="Quantity in (Grams, ml, piece/packet)">
          <span id="quamsg"></span>
       </div>
     </div>
     <br>
     <div class="col">
       <div class="form-group">
-      <label for price><b>Price (for 250g, 250ml, 1 Piece)</b> </label>
-        <input type="number" name="price" class="form-control category customselect classic"id="price" placeholder="Price (for 250g, 250ml, 1 Piece)">
+      <label for price><b>Price (for 250g/ml, 1 Piece/packet)</b> </label>
+        <input type="number" name="price" class="form-control category customselect classic"id="price" placeholder="Price (for 250g/ml, 1 Piece/packet)">
       <span id="primsg"></span>
       </div>
     </div>
@@ -82,8 +82,8 @@ if (isset($_SESSION['Ownerid'])) {
   <div class="row">
     <div class="col">
       <div class="form-group">
-      <label for dprice><b>Discounted Price (for 250g, 250ml, 1 Piece)</b> </label>
-        <input type="number" name="dprice" class="form-control category customselect classic"id="dprice" placeholder="DiscountedPrice (for 250g, 250ml, 1 Piece)">
+      <label for dprice><b>Discounted Price (for 250g/ml, 1 Piece/packet)</b> </label>
+        <input type="number" name="dprice" class="form-control category customselect classic"id="dprice" placeholder="DiscountedPrice (for 250g/ml, 1 Piece/packet)">
       <span id="dprimsg"></span>
       </div>
     </div>
@@ -106,7 +106,7 @@ if (isset($_SESSION['Ownerid'])) {
   <tr>
     <th scope="col">Items</th>
     <th scope="col">Quantity</th>
-    <th scope="col">Price (per 250g, 250ml, 1 Piece)</th>
+    <th scope="col">Price (per 250g/ml, 1 Piece/packet)</th>
     <th scope="col">Discounted Price</th>
   </tr>
 </thead>
@@ -135,7 +135,16 @@ if (isset($_SESSION['Ownerid'])) {
               }else if ($type==3) {
                 $fquantity=$quantity/1000;
                 $unit="litre";
+              }else if ($type==4) {
+                $fquantity=$quantity;
+                if ($fquantity==1) {
+                  $unit="packet";
+                }
+                else {
+                $unit="packets";
+                }
               }
+              
             echo '
             <tr>
               <th scope="col">'.$row1['i_eng'].'</th>

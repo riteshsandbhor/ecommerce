@@ -61,7 +61,7 @@
               $weight=$weight/1000;
            }
          }
-         else {
+         else if ($type==2) {
            $conversion=$weight;
            $finalprice=$basicprize*$conversion;
            $totalfinalprice=$totalfinalprice+$finalprice;
@@ -71,7 +71,28 @@
            else {
             $unit="pieces";
            }
-         }
+         }else if ($type==3) {
+          $conversion=$weight/250;
+          $finalprice=$basicprize*$conversion;
+          $totalfinalprice=$totalfinalprice+$finalprice;
+          if ($weight < 1000) {
+            $unit="ml";
+          }
+          else {
+             $unit="litre";
+             $weight=$weight/1000;
+          }
+        }else if ($type==4) {
+          $conversion=$weight;
+          $finalprice=$basicprize*$conversion;
+          $totalfinalprice=$totalfinalprice+$finalprice;
+          if ($weight == 1) {
+            $unit="packet";
+          }
+          else {
+           $unit="packets";
+          }
+        }
          $payment = $row123['payment_id'];
           if($payment == null){
             $payment_result = "unsuccessful";

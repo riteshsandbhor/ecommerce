@@ -42,7 +42,7 @@
     <div class="col">
       <div class="form-group">
         <div class=" text-center">
-          <select style="margin-bottom: 15px;" class="form-control category customselect classic" name="formcategory" id="formcategory" required>
+          <select style="margin-bottom: 15px;width: 100% !important;" class="form-control category customselect classic" name="formcategory" id="formcategory" required>
               <option value="" selected disabled><?php echo lang('category')?></option>
               <?php
                 $query=mysqli_query($con,"SELECT * FROM category");
@@ -86,7 +86,7 @@
       <div class="col-sm-6">
         <div class="form-group">
           <div class=" text-center">
-          <select style="margin-bottom: 15px;" class="form-control category customselect classic" name="type" id="type" required>
+          <select style="margin-bottom: 15px;width: 100% !important;" class="form-control category customselect classic" name="type" id="type" required>
               <option value="" selected disabled><?php echo lang('type')?></option>
               <?php
                 $query=mysqli_query($con,"SELECT * FROM type");

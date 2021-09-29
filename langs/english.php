@@ -85,7 +85,11 @@ $lang = array(
     'change_verify_email'=> 'CHANGE AND VERIFY EMAIL',
     'Vegetable'=> 'Vegetable',
     'Fruits'=> 'Fruits',
-    'all'=>'ALL'
+    'all'=>'ALL',
+    'oil' => 'oil',
+    'packet' =>'Packet',
+    'sprouts' => 'Sprouts',
+    'milk' => 'Milk'
 
 
 

@@ -128,7 +128,7 @@
                $unit="pieces";
               }
             }
-            if ($type==3) {
+            else if ($type==3) {
               $conversion=$weight/250;
               if ($weight < 1000) {
                 $unit="ml";
@@ -136,6 +136,15 @@
               else {
                  $unit="litre";
                  $weight=$weight/1000;
+              }
+            }
+            else if ($type==4) {
+              $conversion=$weight;
+              if ($weight == 1) {
+                $unit="packet";
+              }
+              else {
+               $unit="packets";
               }
             }
               echo '
