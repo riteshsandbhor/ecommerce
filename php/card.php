@@ -92,6 +92,7 @@
           $avaiquantity=($quantity/1000);
           $allok=1;
           $finalprice=$price*4;
+          $nonDPrice=$nonDPrice*4;
           $unit="litre";
         }
       }else if ($type==4) {
@@ -104,15 +105,17 @@
       }
       if ($allok==1) {
         echo '
+        
         <div class="subcontain box">
           <div class="card newscard">
+          <section id="'.$itemid.'">
             <figure>
             <img style=" width:100%;height: 200px;background-size: contain;"  src="../images/Veg/'.$img.'" alt="Card image cap">
             </figure>
             <div class="card-body" style="width:80%;margin:auto;">
-                <h5 class="card-title name">'.lang($eng).' </h5>
+                <h5 class="card-title name">'.lang($eng).'</h5>
                 <p class="dp"><span class="ndp">₹'.$nonDPrice.'</span> ₹'.$finalprice.'<span>/'.$unit.'</span></p>
-                <form method="post">
+                <form class="card" >
                 <input type="hidden" name="itemid" value="'.$itemid.'">
                 <input type="hidden" name="itemtype" value="'.$type.'">
                 <input type="hidden" name="itemprice" value="'.$price.'">';
@@ -176,13 +179,15 @@
                 echo '
                   <div class="row">
                     <div class="col">
-                      <input type="submit" name="addtocart" class="btn btnwhite addtocart" value="'.lang('add_to_cart').'">
+                      <button  name="addtocart" onclick="cart(this)" class="btn btnwhite addtocart">'.lang('add_to_cart').'</button>
                     </div>
                   </div>
                   </form>
                   </div>
+                  </section>
                   </div>
-                  </div>';
+                  </div>
+                 ';
       }
 
     }

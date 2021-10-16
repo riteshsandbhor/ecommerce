@@ -35,42 +35,57 @@ if (isset($_SESSION['Ownerid'])) {
         <input type="date" name="date2" class="form-control category customselect classic" id="epdate" placeholder="Since when" required>
       </div>
     </div>
-    <div class="col-md-4" style="margin:auto">
-        <input type="submit"class="btn btnwhite" name="time" value="View">
-    </div>
   </div>
+
+    <div class="row" style="margin-top: 10px"> 
+      <div class="col-md-4">
+        <div class="form-group">
+        <div class="text-center">
+          <select class="form-control sort customselect classic" style="width: 100% !important" name="paymentType"  id="sort">
+            <option value="0" selected >ALL</option>
+            <option value="1">Online Payments</option>
+            <option value="2">COD</option>
+          </select>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-4" >
+        <input type="submit"class="btn btnwhite" name="time" value="View">
+      </div>
+    </div>
+    
 </form>
 </div>
 <br><br>
 <?php if (isset($_POST['time'])) {
 
   $date1 = explode('-', mysqli_real_escape_string($con,$_POST['date1']));
-               $month = $date1[1];
-                $day   = $date1[2];
-               $year  = $date1[0];
-               $hour=00;
-               $minu=00;
-               $dateStr = "$month"."/".$day."/"."$year";
-               $timeStr = "$hour".":"."$minu".":00";
-               list($hours, $minu) = explode(':', $timeStr);
-               $dateTime = DateTime::createFromFormat('m/d/Y', $dateStr)->setTime($hours, $minu);
-               $timeStamp = $dateTime->getTimestamp();
+    $month = $date1[1];
+    $day   = $date1[2];
+    $year  = $date1[0];
+    $hour=00;
+    $minu=00;
+    $dateStr = "$month"."/".$day."/"."$year";
+    $timeStr = "$hour".":"."$minu".":00";
+    list($hours, $minu) = explode(':', $timeStr);
+    $dateTime = DateTime::createFromFormat('m/d/Y', $dateStr)->setTime($hours, $minu);
+    $timeStamp = $dateTime->getTimestamp();
 
-               $date2 = explode('-',mysqli_real_escape_string($con, $_POST['date2']));
-               $month2 = $date2[1];
-               $day2   = $date2[2];
-               $year2  = $date2[0];
-               $hour2=23;
-               $minu2=59;
-               $dateStr2 = "$month2"."/".$day2."/"."$year2";
-               $timeStr2 = "$hour2".":"."$minu2".":00";
-               list($hours2, $minu2) = explode(':', $timeStr2);
-               $dateTime = DateTime::createFromFormat('m/d/Y', $dateStr2)->setTime($hours2, $minu2);
-               $timeStamp2 = $dateTime->getTimestamp();
+    $date2 = explode('-',mysqli_real_escape_string($con, $_POST['date2']));
+    $month2 = $date2[1];
+    $day2   = $date2[2];
+    $year2  = $date2[0];
+    $hour2=23;
+    $minu2=59;
+    $dateStr2 = "$month2"."/".$day2."/"."$year2";
+    $timeStr2 = "$hour2".":"."$minu2".":00";
+    list($hours2, $minu2) = explode(':', $timeStr2);
+    $dateTime = DateTime::createFromFormat('m/d/Y', $dateStr2)->setTime($hours2, $minu2);
+    $timeStamp2 = $dateTime->getTimestamp();
 
-               $from=date('d/m/y',$timeStamp);
-               $to=date('d/m/y',$timeStamp2);
-                ?>
+    $from=date('d/m/y',$timeStamp);
+    $to=date('d/m/y',$timeStamp2);
+?>
 
 
 <div class="card ownercard">
@@ -86,14 +101,21 @@ if (isset($_SESSION['Ownerid'])) {
   <tbody>
     <?php
     $totalfinal=0;
-    $query2 = "SELECT o_id FROM finalorder WHERE delivery=1 && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+    if($_POST['paymentType'] == "0"){
+      $query2 = "SELECT o_id FROM finalorder WHERE delivery=1 && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+    } 
+    else if($_POST['paymentType'] == "1"){
+      $query2 = "SELECT o_id FROM finalorder WHERE delivery=1 && payment_id != 'COD' && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+    } 
+    else{
+      $query2 = "SELECT o_id FROM finalorder WHERE delivery=1 && payment_id = 'COD' && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+    }
     $result2 = mysqli_query($con, $query2);
     $query = "SELECT item_id,i_eng,type FROM items;";
     $result = mysqli_query($con, $query);
+
     if (mysqli_num_rows($result) > 0)
     {
-
-
         while ($row1 = mysqli_fetch_assoc($result)) {
           $finalquantity=0;
           $finalprice=0;
@@ -201,7 +223,15 @@ if (isset($_SESSION['Ownerid'])) {
         while ($row1 = mysqli_fetch_assoc($result)) {
           $final=0;
           $did=$row1['d_id'];
-          $query2 = "SELECT o_id FROM finalorder WHERE delivery=1 && deliveryboy=$did && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+          if($_POST['paymentType'] == "0"){
+            $query2 = "SELECT o_id FROM finalorder WHERE delivery=1  && deliveryboy=$did && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+          } 
+          else if($_POST['paymentType'] == "1"){
+            $query2 = "SELECT o_id FROM finalorder WHERE delivery=1 && payment_id !='COD' && deliveryboy=$did && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+          } 
+          else{
+            $query2 = "SELECT o_id FROM finalorder WHERE delivery=1 && payment_id ='COD' && deliveryboy=$did && timedelivery BETWEEN $timeStamp AND $timeStamp2";
+          }
           $result2 = mysqli_query($con, $query2);
           $row25 = mysqli_num_rows($result2);
           if (mysqli_num_rows($result2) > 0)

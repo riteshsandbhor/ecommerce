@@ -22,7 +22,8 @@ var options = {
 var rzp1 = new Razorpay(options);
 rzp1.on('payment.failed', function (response){
     alert(response.error.description);
-});
+});5
+
 btn.onclick = function(){
     //Ajax
     let xhr = new XMLHttpRequest(); //creating XML object

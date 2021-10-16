@@ -16,55 +16,7 @@ if(isset($_COOKIE['user'])){
 }
 if (isset($_SESSION['Custid'])) {
   $id=$_SESSION['Custid'];
-  if (isset($_POST['addtocart'])) {
-    $itemid=$_POST['itemid'];
-    $currenttime=time();
-    $time=$currenttime+600;
-    $quantity=$_POST['quantity1'];
-    $itemtype=$_POST['itemtype'];
-    $itemprice=$_POST['itemprice'];
-    $query1= "SELECT cart_id,weight FROM `cart` WHERE o_id=0 && c_id=$id && item_id=$itemid";
-   $result1 = mysqli_query($con, $query1);
-
-   if (mysqli_num_rows($result1) > 0){
-     $row2 = mysqli_fetch_assoc($result1);
-     $cartid=$row2['cart_id'];
-     $original=$row2['weight'];
-     $final=$original+$quantity;
-     if ($itemtype==1) {
-       $conversion=$final/250;
-       $finalprice=$itemprice*$conversion;
-     }
-     else if ($itemtype==2) { 
-       $finalprice=$itemprice*$final;
-     }
-     else if ($itemtype==3) {
-      $conversion=$final/250;
-      $finalprice=$itemprice*$conversion;
-    }else if ($itemtype==4) { 
-      $finalprice=$itemprice*$final;
-    }
-     $query= "UPDATE `cart` SET weight=$final,price=$finalprice WHERE cart_id=$cartid ";
-     $result = mysqli_query($con, $query);
-   }else {
-     if ($itemtype==1) {
-       $conversion=$quantity/250;
-       $finalprice=$itemprice*$conversion;
-     }
-     else if ($itemtype==2) {
-       $finalprice=$itemprice*$quantity;
-     }
-     else if ($itemtype==3) {
-      $conversion=$quantity/250;
-      $finalprice=$itemprice*$conversion;
-    }else if ($itemtype==4) {
-      $finalprice=$itemprice*$quantity;
-    }
-     $query= "INSERT INTO `cart`(`c_id`, `item_id`, `weight`, `price`) VALUES ($id,$itemid,$quantity,$finalprice)";
-     $result = mysqli_query($con, $query);
-   }
-    header("Location: ./cart.php");
-  }
+  
 }
 
 ?>
@@ -172,9 +124,13 @@ if (isset($_SESSION['Custid'])) {
 
 <script type="text/javascript">
 
+
+
 // document.getElementById('my_selection').onchange = function() {
 //     window.location.href = this.children[this.selectedIndex].getAttribute('href');
 // }
+
+
 
 function ruralSelected(){
     var sort = document.getElementById("sort");
@@ -216,6 +172,38 @@ function ruralSelected(){
 //      });
 //     }
 
+function addToCart(form, e){
+  console.log("hello");
+  e.preventDefault();
+}
+
+function cart(btn){
+  col = btn.parentNode;
+  row = col.parentElement;
+  form = row.parentElement;
+
+  form.onsubmit = (e)=>{
+    e.preventDefault();
+  }
+
+  let xhr = new XMLHttpRequest(); //creating XML object
+  xhr.open("POST", "./addToCartBackend.php", true);
+  xhr.onload = ()=>{
+    if(xhr.readyState == XMLHttpRequest.DONE){
+        if(xhr.status == 200){
+            let data = xhr.response;
+          if(data == "success"){
+              alert("Product Added");
+          }else{
+              alert('Something Went Wrong Error -> '+data);
+          }
+      }
+    }
+  }
+  // Sending data from Ajax to php
+  let formData = new FormData(form); //creating new formData
+  xhr.send(formData); // sending form data to php
+}
 
 
 $(document).ready(function(){
@@ -238,6 +226,7 @@ $(document).ready(function(){
             return matcher.test($(this).find('.name, .sku').text())
         }).hide();
     })
+
 })
 </script>
 </body>

@@ -87,6 +87,8 @@
     .subcontain {
         width: 75%;
     }
+
+    
 }
 
 
@@ -494,10 +496,80 @@ select.classic:focus {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .subcontain {
         width: 85%;
+        margin-bottom: 10px;
     }
+
+    .card.newscard:hover {
+        cursor: pointer;
+        border-radius: 5%;
+        -webkit-box-shadow: 0px 0px 26px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 26px -4px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 26px -4px rgba(0, 0, 0, 0.75);
+        transform: none;
+        transition: none;;
+    }
+
+    .maincontain {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 95%;
+        margin: auto;
+        height: 100%;
+        flex-grow: 1;
+        padding: 2% 1%;
+    }
+    
+    .subcontain {
+        max-width: 45%;
+    }
+    
+    .card figure img{
+        width: 100%;
+        height: 120px !important;
+        background-size: contain;
+    }
+    
+    .card .card-title{
+        font-size: 17px;
+    }
+    
+    .card select.form-control:not([size]):not([multiple]) {
+        height: calc(2rem);
+    }
+    
+    .card-body select{
+        font-size: 12px;
+        padding: 0.25rem;
+    }
+    
+    .card-body input {
+        font-size: 12px;
+        padding: 0.25rem;
+        text-align: center;
+    }
+    
+    .card-body{
+        width: 92% !important;
+        margin-left: 5px !important;
+        margin-right: 5px !important;
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+        min-height: 30vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: .7rem;
+    }
+
+    select.form-control:not([size]):not([multiple]) {
+        width: -webkit-fill-available !important;
+    }
+
 }
 
 .inv {
@@ -518,9 +590,13 @@ select.classic:focus {
     width: 33%;
 }
 
-@media (max-width:305px) {
+@media (max-width:340px) {
     .col-md-2 {
         width: 45%;
+    }
+
+    .card-body{
+        min-height: 40vh;
     }
 }
 
