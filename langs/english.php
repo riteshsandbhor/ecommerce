@@ -86,10 +86,10 @@ $lang = array(
     'Vegetable'=> 'Vegetable',
     'Fruits'=> 'Fruits',
     'all'=>'ALL',
-    'oil' => 'oil',
-    'packet' =>'Packet',
-    'sprouts' => 'Sprouts',
-    'milk' => 'Milk'
+    'Oil' => 'Oil',
+    'Packet' =>'Packet',
+    'Sprouts' => 'Sprouts',
+    'Milk' => 'Milk'
 
 
 

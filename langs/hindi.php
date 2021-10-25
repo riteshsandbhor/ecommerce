@@ -84,7 +84,12 @@ $lang = array(
     'verify_email'=> 'ईमेल सत्यापित करें',
     'all'=>'सब',
     'Vegetable'=>'सबजी',
-    'Fruits'=>'फल'
+    'Fruits'=>'फल',
+    'all'=>'सब',
+    'Oil' => 'तेल',
+    'Packet' =>'पैकेट',
+    'Sprouts' => 'कडधान्य',
+    'Milk' => 'दूध'
 
 
 

@@ -69,8 +69,11 @@
 }
 
 @media (max-width: 490px) {
+    .maincontain {
+        width: 100%;
+    }
     .subcontain {
-        width: 45%;
+        width: 48%;
     }
 }
 
@@ -83,7 +86,7 @@
     }
 }
 
-@media (max-width: 382px) {
+@media (max-width: 300px) {
     .subcontain {
         width: 75%;
     }
@@ -457,50 +460,7 @@ select.classic:focus {
     box-shadow: 0px 29px 124px -35px rgba(0, 0, 0, 0.75);
 }
 
-@media (max-width: 1067px) {
-    .maincontain {
-        width: 100%;
-    }
-    .cont {
-        width: 100%;
-    }
-    .subcontain {
-        width: 30%;
-    }
-}
 
-@media (max-width: 845px) {
-    .subcontain {
-        width: 40%;
-    }
-}
-
-@media (max-width: 635px) {
-    .subcontain {
-        width: 45%;
-    }
-}
-
-@media (max-width: 565px) {
-    .subcontain {
-        width: 48%;
-    }
-    .maincontain {
-        padding: none;
-    }
-}
-
-@media (max-width: 490px) {
-    .subcontain {
-        width: 75%;
-    }
-}
-
-@media (max-width: 450px) {
-    .subcontain {
-        width: 85%;
-        margin-bottom: 10px;
-    }
 
     .card.newscard:hover {
         cursor: pointer;
@@ -524,9 +484,9 @@ select.classic:focus {
         padding: 2% 1%;
     }
     
-    .subcontain {
+    /* .subcontain {
         max-width: 45%;
-    }
+    } */
     
     .card figure img{
         width: 100%;
@@ -625,4 +585,58 @@ select.classic:focus {
     .ownercard {
         width: 95%;
     }
+}
+@media (max-width: 1067px) {
+    .maincontain {
+        width: 100%;
+    }
+    .cont {
+        width: 100%;
+    }
+    .subcontain {
+        width: 30%;
+    }
+}
+
+@media (max-width: 845px) {
+    .subcontain {
+        width: 40%;
+    }
+}
+
+@media (max-width: 635px) {
+    .subcontain {
+        width: 45%;
+    }
+}
+
+@media (max-width: 565px) {
+    .subcontain {
+        width: 48%;
+    }
+    .maincontain {
+        padding: none;
+    }
+}
+
+
+
+@media (max-width: 450px) {
+    .subcontain {
+        width: 45%;
+        margin-bottom: 10px;
+    }
+    .addtocart{
+        font-size: 80%;
+    }
+    .maincontain {
+        padding: none;
+    }
+}
+
+@media (max-width: 310px) {
+    .subcontain {
+        width: 90%;
+    }
+    
 }

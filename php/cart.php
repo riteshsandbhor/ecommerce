@@ -127,7 +127,7 @@ if (isset($_SESSION['Custid'])) {
              <div class="mainbox3">
              <form class="" action="" method="post">
                <input type="hidden"  name="cartid" value="'.$row1['cart_id'].'">
-               <input type="submit" class="btn btngreen" style="width:100px;background-color:#FF0000;" name="deleteitem" value="Delete">
+               <input type="submit" class="btn btngreen addto" style="width:100px;background-color:#FF0000;" name="deleteitem" value="Delete">
              </form>
              </div>
              </div>

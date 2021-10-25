@@ -1,5 +1,4 @@
 <?php
-session_start();
 include dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'dbconn.php';
 session_start();
 if(isset($_COOKIE['user'])){
@@ -194,8 +193,14 @@ function cart(btn){
             let data = xhr.response;
           if(data == "success"){
               alert("Product Added");
-          }else{
-              alert('Something Went Wrong Error -> '+data);
+          }
+          else if(data == "session_error"){
+             alert("Please Login First");
+
+          }
+          else{
+            // alert(data);
+            alert('Something Went Wrong: '+data);
           }
       }
     }
